@@ -19,11 +19,11 @@ def continuar():
 
 
 escolha = 0
-df = pd.read_csv("dados.csv")
+#df = pd.read_csv("dados.csv")
 list = ['Palestrante', 'Estudante']
 while escolha != 4:
     qtd_pessoas = 0
-    total_rows=len(df.axes[0])
+    #total_rows=len(df.axes[0])
 
     while True:
         linha()
@@ -40,10 +40,10 @@ while escolha != 4:
             linha()
 
 
-            if total_rows+1 > 100:
-                print("Maximo de pessoas atingidas!")
-                continuar()
-                break
+            #if total_rows+1 > 100:
+            #    print("Maximo de pessoas atingidas!")
+            #    continuar()
+            #    break
 
             data_dia = int(input("Qual o dia do evento? dd "))
             data_mes = int(input("Qual o mes do evento? mm "))
