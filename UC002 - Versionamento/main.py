@@ -20,6 +20,19 @@ def menu(nome):
     print(f"{verde}-=-{branco}" * 10)
 
 
+def box(titulo, *caracteristicas):
+    print("-" * 40)
+    print("|", end=None)
+    print(f'{titulo:^38}', end=None)
+    print("-" * 40)
+
+    for c in caracteristicas:
+        print("|  ", end=None)
+        print(f"{c:<38}")
+        print("|")
+    print("-" * 40)
+
+
 def cadastraCliente():
     limp()
     menu("Cadastro de Clientes")
@@ -114,6 +127,15 @@ def cadastraFornecedor():
     with open('fornecedores.csv', "+a", newline='') as file:
         writer = csv.writer(file)
         writer.writerow([nome, cnpj, ende, produtos_for])
+
+
+    menu("Escolha um plano")
+    print('\n')
+
+    box('Diaria', 'R$230,00')
+    box('1º Pacote', 'Uma semana', '10% de desconto', 'Total = R$1449')
+    box('2º Pacote', 'Duas semanas', '15% de desconto', 'Total = R$ 2737')
+    box('3º Pacote', '30 dias', '25% de desconto', 'Total = R$5175')
 
     print("CADASTRADO!")
     sleep(1)
