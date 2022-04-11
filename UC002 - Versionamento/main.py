@@ -14,13 +14,18 @@ nomes_for = []          # Lista de nomes dos fornecedores
 cnpj_for = []           # Lista de CNPJ dos fornecedores
 enderecos_for = []      # Lista de entereços dos fornecedores
 
+verm = '\033[31m'
+verde = '\033[32m'
+branco = '\033[37m'
+
+
 def limp():
     os.system('cls') or None
 
 def menu(nome):
-    print("\33[32m-=-" * 10)
-    print(f'\33[37m{nome.upper():^30}')
-    print("\33[32m-=-\33[37m" * 10)
+    print(f"{verde}-=-" * 10)
+    print(f'{branco}{nome.upper():^30}')
+    print(f"{verde}-=-{branco}" * 10)
 
 
 while True:
@@ -33,7 +38,15 @@ while True:
         limp()
         menu("Cadastro de Clientes")
         nome = str(input("Nome do Cliente: ")).upper().strip()
-        idade = int(input("Idade: "))
+
+        while True:
+            idade = str(input("Idade: "))
+            if idade.isnumeric():
+                idade = int(idade)
+                break
+            else:
+                print(f"{verm}ERRO! digite a idade novamente{branco}")
+
         ende = str(input("Onde Você mora? ")).upper().strip()
         cpf = str(input("CPF: ")).strip()
         dias = int(input("Quantidade de dias: "))
@@ -50,7 +63,7 @@ while True:
 
     elif (opc == 2):    # Cadastrar fornecedores
         limp()
-        menu("Cadastro de Fornecedires")
+        menu("Cadastro de Fornecedores")
         nome = str(input("Nome do Fornecedor: ")).upper().strip()
         cnpj = str(input("CNPJ: ")).strip()
         ende = str(input("Endereço: ")).upper().strip()
@@ -70,7 +83,7 @@ while True:
             print(f'Idade: {idades_cl[i]}')
             print(f'CPF: {cpf_cl[i]}')
             print(f'Endereço: {enderecos_cl[i]}')
-            print(f'Quantidade de dias{dias_cl[i]}')
+            print(f'Quantidade de dias: {dias_cl[i]}')
             print("-" * 30)
             print("\n")
 
