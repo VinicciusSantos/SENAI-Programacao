@@ -1,18 +1,8 @@
 from time import sleep
 import os
+import csv
 
-quant_cl = 0            # Quantidade total de clientes na pousada
-quant_for = 0           # Quantidade total de fornecedores
-
-nomes_cl = []           # Lista dos nomes dos clientes
-idades_cl = []          # Lista de idades dos clientes
-cpf_cl = []             # Lista de CPFs dos clientes
-enderecos_cl = []       # Lista de endereços dos clientes
-dias_cl = []            # Lista da quantidade de dias que os clientes ficarão
-
-nomes_for = []          # Lista de nomes dos fornecedores
-cnpj_for = []           # Lista de CNPJ dos fornecedores
-enderecos_for = []      # Lista de entereços dos fornecedores
+produtos_for = []       # Lista temporária de produtos dos fornecedores
 
 # -=- Códigos de cores -=-
 verm = '\033[31m'
@@ -64,7 +54,7 @@ def cadastraCliente():
         print(f'4 - Endereço: {ende}')
         print(f'5 - Quantidade de dias: {dias}')
         print("-" * 30)
-        x = input("Aperte <ENTER> para confirmar cadastro ou um numero para editar")
+        x = input("Aperte <ENTER> para confirmar cadastro ou um numero para editar: ")
 
         if x == '1':
             nome = str(input("Nome do Cliente: ")).upper().strip()
@@ -95,25 +85,36 @@ def cadastraCliente():
         else:
             break
 
-    nomes_cl.append(nome)
-    idades_cl.append(idade)
-    enderecos_cl.append(ende)
-    cpf_cl.append(cpf)
-    dias_cl.append(dias)
+    # Gravando as informações no CSV:
+    with open('clientes.csv', "+a", newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([nome, idade, ende, cpf, dias])
+
     print("CADASTRADO!")
     sleep(1)
 
 
 def cadastraFornecedor():
+    produtos_for.clear()
     limp()
     menu("Cadastro de Fornecedores")
     nome = str(input("Nome do Fornecedor: ")).upper().strip()
     cnpj = str(input("CNPJ: ")).strip()
     ende = str(input("Endereço: ")).upper().strip()
 
-    nomes_for.append(nome)
-    cnpj_for.append(cnpj)
-    enderecos_cl.append(ende)
+    while True:
+        limp()
+        menu('Cadastro de produtos')
+        p = str(input("Digite o nome do produto ou 0 para sair: "))
+        if (p == '0'):
+            break
+
+        produtos_for.append(p)
+
+    with open('fornecedores.csv', "+a", newline='') as file:
+        writer = csv.writer(file)
+        writer.writerow([nome, cnpj, ende, produtos_for])
+
     print("CADASTRADO!")
     sleep(1)
 
@@ -121,40 +122,47 @@ def cadastraFornecedor():
 def exibeCadastrados():
     limp()
     menu("mostrando cadastros")
+    
+    with open('clientes.csv', 'r',) as file:
+        reader = csv.reader(file)
+        for l in reader:
+            print(f'Nome: {l[0]} \nIdade: {l[1]} \nEndereço: {l[2]} \nCPF: {l[3]} \nDias: {l[4]}')
+            print("-" * 30)
 
-    if quant_cl == 0:
-        print(f"{verm}ERRO! Nenhum Cliente cadastrado{branco}")
-        input("Pressione uma tecla para voltar ao MENU...")
-        return
+    input("Pressione uma tecla para voltar ao MENU...")
 
-    for i in range(quant_cl):        
-        print(f"Nome: {nomes_cl[i]}")
-        print(f'Idade: {idades_cl[i]}')
-        print(f'CPF: {cpf_cl[i]}')
-        print(f'Endereço: {enderecos_cl[i]}')
-        print(f'Quantidade de dias: {dias_cl[i]}')
-        print("-" * 30)
+
+def exibeFornecedores():
+    limp()
+    menu("mostrando fornecedores")
+
+    with open('fornecedores.csv', 'r',) as file:
+        reader = csv.reader(file)
+        for l in reader:
+            print(f'Nome: {l[0]} \nCNPJ: {l[1]} \nEndereço: {l[2]} \nProdutos: {l[3]}')
+            print("-" * 30)
 
     input("Pressione uma tecla para voltar ao MENU...")
 
 while True:     # MENU PRINCIPAL
     limp()
     menu("Programa Code +")
-    print("1 - Cadastrar Cliente \n2 - Cadastro de fornecedores \n3 - Exibir Clientes \n4 - Sair")
+    print("1 - Cadastrar Cliente \n2 - Cadastro de fornecedores \n3 - Exibir Clientes \n4 - Exibir Fornecedores \n5 - Sair")
     opc = int(input(f"{verde}Escolha: {branco}"))
 
     if opc == 1: 
         cadastraCliente()
-        quant_cl += 1
 
     elif opc == 2: 
         cadastraFornecedor()
-        quant_for += 1
 
     elif opc == 3: 
         exibeCadastrados()
-    
+
     elif opc == 4:
+        exibeFornecedores()
+    
+    elif opc == 5:
         limp()
         print(f"{verm}Encerrando programa!{branco}")
         sleep(1)
