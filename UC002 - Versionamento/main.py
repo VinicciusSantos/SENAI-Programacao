@@ -56,8 +56,6 @@ def cadastraCliente():
         else:
             break
 
-    dias = int(input("Quantidade de dias: "))
-
     # Confirmando cadastros:
     while True:
         cpf = f'{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}'
@@ -99,17 +97,19 @@ def cadastraCliente():
     print("CADASTRADO!")
     sleep(0.5)
 
+    # -=- Preços dos pacotes individuais -=-
     preco_diaria_ind = 200.00
     preco_pacote1_ind = 1130.00
     preco_pacote2_ind = 2520.00
     preco_pacote3_ind = 4500.00
 
+    # -=- Preços dos pacotes Duplas -=-
     preco_diaria_dupla = 350.00
     preco_pacote1_dupla = 1130.00
     preco_pacote2_dupla = 4655.00
     preco_pacote3_dupla = 9975.00
 
-    while True:
+    while True: # Escolhendo plano individual ou dupla
         limp()
         menu("Escolha um plano")
         print("1 - Individual \n2 - Dupla")
@@ -127,24 +127,57 @@ def cadastraCliente():
         box('2º Pacote', 'Duas semanas', '15% de desconto', f'Total = R${preco_pacote2_ind}')
         box('3º Pacote', '30 dias', '25% de desconto', f'Total = R${preco_pacote3_ind}')
 
-        while True:
-            quant_dias = int(input('Quantidade de dias: '))
-
-
     elif pessoas_plano == 2:
-        box('Diaria', 'R${preco_diaria_dupla}')
+        box('Diaria', f'R${preco_diaria_dupla}')
         box('1º Pacote', 'Uma semana', '10% de desconto', f'Total = R${preco_pacote1_dupla}')
         box('2º Pacote', 'Duas semanas', '15% de desconto', f'Total = R${preco_pacote2_dupla}')
-        box('3º Pacote', '30 dias', '25% de desconto', f'Total = R${preco_pacote3_dupla}')
+        box('3º Pacote', '30 dias', '25% de desconto', f'Total = R${preco_pacote3_dupla}')     
         
-        while True:
-            quant_dias = int(input('Quantidade de dias: '))
+    quant_dias = int(input('Quantidade de dias: '))
+    cp_dias = quant_dias    # Cópia da variavel dias
+    
+    # -=- Calculando o preço à ser pago pelo cliente -=-
+    preco = 0
+    while True:
+        if cp_dias > 30:                                # plano de 1 mês => 30 dias
+            if pessoas_plano == 1:
+                preco += preco_pacote3_ind
+            elif pessoas_plano == 2:
+                preco += preco_pacote3_dupla
+            cp_dias -= 30
+            print("Plano 30 dias")
 
+        elif cp_dias >= 14 and cp_dias < 30:               # plano de 2 semanas => 14 dias
+            if pessoas_plano == 1:
+                preco += preco_pacote2_ind
+            elif pessoas_plano == 2:
+                preco += preco_pacote2_dupla
+            cp_dias -= 14
+            print("Plano 2 semanas")
+
+        elif cp_dias >= 7 and cp_dias < 14:               # plano de 1 semana => 7 dias
+            if pessoas_plano == 1:
+                preco += preco_pacote1_ind
+            elif pessoas_plano == 2:
+                preco += preco_pacote1_dupla
+            print("Plano 1 semana")
+            cp_dias -= 7
+        
+        else:
+            if pessoas_plano == 1:
+                preco += cp_dias * preco_diaria_ind
+            elif pessoas_plano == 2:
+                preco += cp_dias * preco_diaria_dupla
+            print(f"Pacote diaria aplicado {cp_dias} vezes!")
+            break
+
+    print(preco)
+    input("Aperte uma tecla")
     
     # Gravando as informações no CSV:
     with open('clientes.csv', "+a", newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([nome, idade, ende, cpf, dias])
+        writer.writerow([nome, idade, ende, cpf, quant_dias])
 
 
 def cadastraFornecedor():
