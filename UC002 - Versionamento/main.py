@@ -29,7 +29,7 @@ def box(titulo, *caracteristicas):
 
     for c in caracteristicas:
         print("|", end='')
-        print(f" {verde}- {branco}{c:^25}", end='')
+        print(f" {branco}{c:^27}", end='')
         print(f"{verde}|")
     print(f"{verde}-{branco}" * 30)
 
@@ -49,7 +49,7 @@ def cadastraCliente():
 
     ende = str(input("Onde Você mora? ")).upper().strip()
 
-    while True:
+    while True:     # Recebendo e validando o CPF
         cpf = str(input("Numeros do CPF: ")).strip()
         if len(cpf) != 11:
             print(f"{verm}ERRO! Tamanho inválido{branco}")
@@ -60,13 +60,13 @@ def cadastraCliente():
 
     # Confirmando cadastros:
     while True:
+        cpf = f'{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}'
         limp()
         menu("Confirmando cadastro")
         print(f"1 - Nome: {nome}")
         print(f'2 - Idade: {idade}')
         print(f'3 - CPF: {cpf}')
         print(f'4 - Endereço: {ende}')
-        print(f'5 - Quantidade de dias: {dias}')
         print("-" * 30)
         x = input("Aperte <ENTER> para confirmar cadastro ou um numero para editar: ")
 
@@ -93,28 +93,58 @@ def cadastraCliente():
         elif x == '4':        # editando Endereço
             ende = str(input("Onde Você mora? ")).upper().strip()
 
-        elif x == '5':        # Editando quantidade de dias
-            dias = int(input("Quantidade de dias: "))
-
         else:
             break
 
+    print("CADASTRADO!")
+    sleep(0.5)
+
+    preco_diaria_ind = 200.00
+    preco_pacote1_ind = 1130.00
+    preco_pacote2_ind = 2520.00
+    preco_pacote3_ind = 4500.00
+
+    preco_diaria_dupla = 350.00
+    preco_pacote1_dupla = 1130.00
+    preco_pacote2_dupla = 4655.00
+    preco_pacote3_dupla = 9975.00
+
+    while True:
+        limp()
+        menu("Escolha um plano")
+        print("1 - Individual \n2 - Dupla")
+        pessoas_plano = int(input(f"{verde}Opção: {branco}"))
+        
+        if pessoas_plano == 1 or pessoas_plano == 2:
+            break
+        else:
+            print(f"{verm}ERRO! escolha um plano válido! {branco}")
+            sleep(1)
+
+    if pessoas_plano == 1:
+        box('Diaria', f'R${preco_diaria_ind}')
+        box('1º Pacote', 'Uma semana', '10% de desconto', f'Total = R${preco_pacote1_ind}')
+        box('2º Pacote', 'Duas semanas', '15% de desconto', f'Total = R${preco_pacote2_ind}')
+        box('3º Pacote', '30 dias', '25% de desconto', f'Total = R${preco_pacote3_ind}')
+
+        while True:
+            print(f'5 - Quantidade de dias: {dias}')
+
+
+    elif pessoas_plano == 2:
+        box('Diaria', 'R${preco_diaria_dupla}')
+        box('1º Pacote', 'Uma semana', '10% de desconto', f'Total = R${preco_pacote1_dupla}')
+        box('2º Pacote', 'Duas semanas', '15% de desconto', f'Total = R${preco_pacote2_dupla}')
+        box('3º Pacote', '30 dias', '25% de desconto', f'Total = R${preco_pacote3_dupla}')
+        
+        while True:
+            print(f'5 - Quantidade de dias: {dias}')
+
+    
     # Gravando as informações no CSV:
     with open('clientes.csv', "+a", newline='') as file:
         writer = csv.writer(file)
         writer.writerow([nome, idade, ende, cpf, dias])
-
-    print("CADASTRADO!")
-    sleep(1)
-    limp()
-    menu("Escolha um plano")
-    print('\n')
-
-    box('Diaria', 'R$230,00')
-    box('1º Pacote', 'Uma semana', '10% de desconto', 'Total = R$1449')
-    box('2º Pacote', 'Duas semanas', '15% de desconto', 'Total = R$ 2737')
-    box('3º Pacote', '30 dias', '25% de desconto', 'Total = R$5175')
-    pacote = int(input("Escolha: "))
 
 
 def cadastraFornecedor():
