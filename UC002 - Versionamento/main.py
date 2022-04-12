@@ -2,6 +2,18 @@ from time import sleep
 import os
 import csv
 
+# -=- Preços dos pacotes individuais -=-
+preco_diaria_ind = 200.00
+preco_pacote1_ind = 1130.00
+preco_pacote2_ind = 2520.00
+preco_pacote3_ind = 4500.00
+
+# -=- Preços dos pacotes Duplas -=-
+preco_diaria_dupla = 350.00
+preco_pacote1_dupla = 1130.00
+preco_pacote2_dupla = 4655.00
+preco_pacote3_dupla = 9975.00
+
 produtos_for = []       # Lista temporária de produtos dos fornecedores
 
 # -=- Códigos de cores -=-
@@ -97,18 +109,6 @@ def cadastraCliente():
     print("CADASTRADO!")
     sleep(0.5)
 
-    # -=- Preços dos pacotes individuais -=-
-    preco_diaria_ind = 200.00
-    preco_pacote1_ind = 1130.00
-    preco_pacote2_ind = 2520.00
-    preco_pacote3_ind = 4500.00
-
-    # -=- Preços dos pacotes Duplas -=-
-    preco_diaria_dupla = 350.00
-    preco_pacote1_dupla = 1130.00
-    preco_pacote2_dupla = 4655.00
-    preco_pacote3_dupla = 9975.00
-
     while True: # Escolhendo plano individual ou dupla
         limp()
         menu("Escolha um plano")
@@ -145,25 +145,25 @@ def cadastraCliente():
             elif pessoas_plano == 2:
                 preco += preco_pacote3_dupla
             cp_dias -= 30
-            print("Plano 30 dias")
+            print("Plano 30 dias aplicado!")
 
-        elif cp_dias >= 14 and cp_dias < 30:               # plano de 2 semanas => 14 dias
+        elif cp_dias >= 14 and cp_dias < 30:            # plano de 2 semanas => 14 dias
             if pessoas_plano == 1:
                 preco += preco_pacote2_ind
             elif pessoas_plano == 2:
                 preco += preco_pacote2_dupla
             cp_dias -= 14
-            print("Plano 2 semanas")
+            print("Plano 2 semanas aplicado")
 
-        elif cp_dias >= 7 and cp_dias < 14:               # plano de 1 semana => 7 dias
+        elif cp_dias >= 7 and cp_dias < 14:             # plano de 1 semana => 7 dias
             if pessoas_plano == 1:
                 preco += preco_pacote1_ind
             elif pessoas_plano == 2:
                 preco += preco_pacote1_dupla
-            print("Plano 1 semana")
+            print("Plano 1 semana aplicado")
             cp_dias -= 7
         
-        else:
+        elif cp_dias != 0:                              # Planos de diárias
             if pessoas_plano == 1:
                 preco += cp_dias * preco_diaria_ind
             elif pessoas_plano == 2:
@@ -171,8 +171,7 @@ def cadastraCliente():
             print(f"Pacote diaria aplicado {cp_dias} vezes!")
             break
 
-    print(preco)
-    input("Aperte uma tecla")
+    print(f'{verde}Preço Final:{branco} R${preco}')
     
     # Gravando as informações no CSV:
     with open('clientes.csv', "+a", newline='') as file:
