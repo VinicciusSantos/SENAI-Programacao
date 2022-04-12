@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from time import sleep
 import os
 import csv
@@ -35,7 +36,7 @@ def menu(nome):
 def box(titulo, *caracteristicas):
     print(f"{verde}-" * 30)
     print("|", end='')
-    print(f'{branco}{titulo:^28}{verde}', end='')
+    print(f'{branco}{titulo.upper():^28}{verde}', end='')
     print("|")
     print(f"-" * 30)
 
@@ -67,10 +68,10 @@ def cadastraCliente():
             print(f"{verm}ERRO! Tamanho inválido{branco}")
         else:
             break
+    cpf = f'{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}'
 
     # Confirmando cadastros:
     while True:
-        cpf = f'{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}'
         limp()
         menu("Confirmando cadastro")
         print(f"1 - Nome: {nome}")
@@ -121,6 +122,7 @@ def cadastraCliente():
             print(f"{verm}ERRO! escolha um plano válido! {branco}")
             sleep(1)
 
+    acompanhante = NULL
     if pessoas_plano == 1:
         box('Diaria', f'R${preco_diaria_ind}')
         box('1º Pacote', 'Uma semana', '10% de desconto', f'Total = R${preco_pacote1_ind}')
@@ -131,13 +133,15 @@ def cadastraCliente():
         box('Diaria', f'R${preco_diaria_dupla}')
         box('1º Pacote', 'Uma semana', '10% de desconto', f'Total = R${preco_pacote1_dupla}')
         box('2º Pacote', 'Duas semanas', '15% de desconto', f'Total = R${preco_pacote2_dupla}')
-        box('3º Pacote', '30 dias', '25% de desconto', f'Total = R${preco_pacote3_dupla}')     
+        box('3º Pacote', '30 dias', '25% de desconto', f'Total = R${preco_pacote3_dupla}')
+        acompanhante = str(input("Nome do acompanhante: ")).strip().upper()     
         
     quant_dias = int(input('Quantidade de dias: '))
     cp_dias = quant_dias    # Cópia da variavel dias
-    
+
     # -=- Calculando o preço à ser pago pelo cliente -=-
     preco = 0
+    quant_p1 = quant_p2 = quant_p3 = quant_diarias = 0
     while True:
         if cp_dias > 30:                                # plano de 1 mês => 30 dias
             if pessoas_plano == 1:
@@ -145,7 +149,7 @@ def cadastraCliente():
             elif pessoas_plano == 2:
                 preco += preco_pacote3_dupla
             cp_dias -= 30
-            print("Plano 30 dias aplicado!")
+            quant_p3 += 1
 
         elif cp_dias >= 14 and cp_dias < 30:            # plano de 2 semanas => 14 dias
             if pessoas_plano == 1:
@@ -153,14 +157,14 @@ def cadastraCliente():
             elif pessoas_plano == 2:
                 preco += preco_pacote2_dupla
             cp_dias -= 14
-            print("Plano 2 semanas aplicado")
+            quant_p2 += 1
 
         elif cp_dias >= 7 and cp_dias < 14:             # plano de 1 semana => 7 dias
             if pessoas_plano == 1:
                 preco += preco_pacote1_ind
             elif pessoas_plano == 2:
                 preco += preco_pacote1_dupla
-            print("Plano 1 semana aplicado")
+            quant_p1 += 1
             cp_dias -= 7
         
         elif cp_dias != 0:                              # Planos de diárias
@@ -168,15 +172,16 @@ def cadastraCliente():
                 preco += cp_dias * preco_diaria_ind
             elif pessoas_plano == 2:
                 preco += cp_dias * preco_diaria_dupla
-            print(f"Pacote diaria aplicado {cp_dias} vezes!")
+            quant_diarias = cp_dias
             break
 
-    print(f'{verde}Preço Final:{branco} R${preco}')
+    limp()
+    box('Resumo da reserva', f'Nome: {nome}', f'CPF: {cpf}', f'Quatidade de dias: {quant_dias}', f'Preço Final: R${preco:.2f}', '-=--=--=--=--=--=--=-',f'Plano 1 aplicado {quant_p1} vezes', f'Plano 2 aplicado {quant_p2} vezes', f'Plano 3 aplicado {quant_p3} vezes', f'Diarias aplicadas {quant_diarias} vezes')
     
     # Gravando as informações no CSV:
     with open('clientes.csv', "+a", newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([nome, idade, ende, cpf, quant_dias])
+        writer.writerow([nome, idade, ende, cpf, quant_dias, preco, acompanhante])
 
 
 def cadastraFornecedor():
@@ -184,8 +189,43 @@ def cadastraFornecedor():
     limp()
     menu("Cadastro de Fornecedores")
     nome = str(input("Nome do Fornecedor: ")).upper().strip()
-    cnpj = str(input("CNPJ: ")).strip()
+
+    while True:
+        cnpj = str(input("CNPJ: ")).strip()
+        if len(cnpj) == 14:
+            break
+        else:
+            print(f"{verm}ERRO! CNPJ Inválido! {branco}")
+
     ende = str(input("Endereço: ")).upper().strip()
+    cnpj = f'{cnpj[:2]}.{cnpj[2:5]}.{cnpj[5:8]}/{cnpj[8:12]}-{cnpj[12:]}'
+    
+    # Confirmando cadastros:
+    while True:
+        limp()
+        menu("Confirmando cadastro")
+        print(f"1 - Nome: {nome}")
+        print(f'2 - CNPJ: {cnpj}')
+        print(f'3 - Endereço: {ende}')
+        print("-" * 30)
+        x = input("Aperte <ENTER> para confirmar cadastro ou um numero para editar: ")
+
+        if x == '1':            # Editando o nome
+            nome = str(input("Nome do Fornecedor: ")).upper().strip()
+        
+        elif x == '2':          # Editando o cnpj
+            while True:
+                cnpj = str(input("CNPJ: ")).strip()
+                if len(cnpj) == 14:
+                    break
+                else:
+                    print(f"{verm}ERRO! CNPJ Inválido! {branco}")
+
+        elif x == '3':        # Editando o endereço
+            ende = str(input("Endereço: ")).upper().strip()
+
+        else:
+            break
 
     while True:
         limp()
