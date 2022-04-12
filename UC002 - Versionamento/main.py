@@ -1,4 +1,5 @@
 from asyncio.windows_events import NULL
+from tarfile import NUL
 from time import sleep
 import os
 import csv
@@ -15,7 +16,9 @@ preco_pacote1_dupla = 1130.00
 preco_pacote2_dupla = 4655.00
 preco_pacote3_dupla = 9975.00
 
-produtos_for = []       # Lista temporária de produtos dos fornecedores
+produtos_nomes_for = []       # Lista temporária de nomes dos produtos dos fornecedores
+produtos_preco_for = []       # Lista temporária de preços dos produtos dos fornecedores
+produtos_quant_for = []       # Lista temporária de quantidades de cada produto fornecido
 
 # -=- Códigos de cores -=-
 verm = '\033[31m'
@@ -185,7 +188,9 @@ def cadastraCliente():
 
 
 def cadastraFornecedor():
-    produtos_for.clear()
+    produtos_nomes_for.clear()
+    produtos_preco_for.clear()
+    produtos_quant_for.clear()
     limp()
     menu("Cadastro de Fornecedores")
     nome = str(input("Nome do Fornecedor: ")).upper().strip()
@@ -220,6 +225,7 @@ def cadastraFornecedor():
                     break
                 else:
                     print(f"{verm}ERRO! CNPJ Inválido! {branco}")
+            cnpj = f'{cnpj[:2]}.{cnpj[2:5]}.{cnpj[5:8]}/{cnpj[8:12]}-{cnpj[12:]}'
 
         elif x == '3':        # Editando o endereço
             ende = str(input("Endereço: ")).upper().strip()
@@ -230,15 +236,46 @@ def cadastraFornecedor():
     while True:
         limp()
         menu('Cadastro de produtos')
-        p = str(input("Digite o nome do produto ou 0 para sair: "))
-        if (p == '0'):
+        print(f"Fornecedor: {nome}")
+        p_nome = str(input("Digite o nome do produto ou '0': ")).upper().strip()
+
+        if p_nome.strip() == '0':
             break
 
-        produtos_for.append(p)
+        p_preco = float(input("Digite o preço unitário: "))
+        p_quant = int(input("Digite a quantidade total: "))
+        preco_final_produtos = p_preco * p_quant
+
+        # Confirmando cadastros:
+        while True:
+            limp()
+            menu("Confirmando cadastro")
+            print(f"1 - Nome do produto: {p_nome}")
+            print(f'2 - Preço unitário: R${p_preco:.2f}')
+            print(f'3 - Quantidade: {p_quant}')
+            print(f"{verde}Preço Final: {branco}R${preco_final_produtos:.2f}")
+            print("-" * 30)
+            x = input("Aperte <ENTER> para confirmar cadastro ou um numero para editar: ")
+
+            if x == '1':            # Editando o nome
+                p_nome = str(input("Digite o nome do produto ou 0: ")).upper().strip()
+            
+            elif x == '2':          # Editando o preco
+                p_preco = int(input("Digite o preço unitário: "))
+
+            elif x == '3':        # Editando a quantidade
+                p_quant = int(input("Digite a quantidade total: "))
+
+            else:
+                break
+
+        produtos_nomes_for.append(p_nome)
+        produtos_preco_for.append(p_preco)
+        produtos_quant_for.append(p_quant)
 
     with open('fornecedores.csv', "+a", newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([nome, cnpj, ende, produtos_for])
+        writer.writerow([nome, cnpj, ende, produtos_nomes_for, produtos_preco_for, produtos_quant_for])
 
     print("CADASTRADO!")
     sleep(1)
