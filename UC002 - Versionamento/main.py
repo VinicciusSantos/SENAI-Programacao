@@ -337,4 +337,4 @@ while True:     # MENU PRINCIPAL
     else:
         print(f"{verm}ERRO! Opção Inválida!{branco}")
         sleep(1)
-        
+       
