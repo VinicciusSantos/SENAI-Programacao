@@ -37,11 +37,11 @@ def menu(nome):
 
 
 def box(titulo, *caracteristicas):
-    print(f"{verde}-" * 30)
+    print(f"{verde}-=-" * 10)
     print("|", end='')
     print(f'{branco}{titulo.upper():^28}{verde}', end='')
     print("|")
-    print(f"-" * 30)
+    print(f"-=-" * 10)
 
     for c in caracteristicas:
         print("|", end='')
@@ -133,13 +133,16 @@ def cadastraCliente():
         box('3º Pacote', '30 dias', '25% de desconto', f'Total = R${preco_pacote3_ind}')
 
     elif pessoas_plano == 2:
+        acompanhante = str(input("Nome do acompanhante: ")).strip().upper() 
+
         box('Diaria', f'R${preco_diaria_dupla}')
+        limp()
         box('1º Pacote', 'Uma semana', '10% de desconto', f'Total = R${preco_pacote1_dupla}')
         box('2º Pacote', 'Duas semanas', '15% de desconto', f'Total = R${preco_pacote2_dupla}')
-        box('3º Pacote', '30 dias', '25% de desconto', f'Total = R${preco_pacote3_dupla}')
-        acompanhante = str(input("Nome do acompanhante: ")).strip().upper()     
+        box('3º Pacote', '30 dias', '25% de desconto', f'Total = R${preco_pacote3_dupla}')  
         
     quant_dias = int(input('Quantidade de dias: '))
+          
     cp_dias = quant_dias    # Cópia da variavel dias
 
     # -=- Calculando o preço à ser pago pelo cliente -=-
@@ -180,7 +183,8 @@ def cadastraCliente():
 
     limp()
     box('Resumo da reserva', f'Nome: {nome}', f'CPF: {cpf}', f'Quatidade de dias: {quant_dias}', f'Preço Final: R${preco:.2f}', '-=--=--=--=--=--=--=-',f'Plano 1 aplicado {quant_p1} vezes', f'Plano 2 aplicado {quant_p2} vezes', f'Plano 3 aplicado {quant_p3} vezes', f'Diarias aplicadas {quant_diarias} vezes')
-    
+    input()
+
     # Gravando as informações no CSV:
     with open('clientes.csv', "+a", newline='') as file:
         writer = csv.writer(file)
