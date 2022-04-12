@@ -25,6 +25,13 @@ verm = '\033[31m'
 verde = '\033[32m'
 branco = '\033[37m'
 
+def quant_linhas(link):
+    cont = 0
+    with open(link, 'r',) as file:
+        reader = csv.reader(file)
+        for l in reader:
+            cont += 1
+    return cont
 
 def limp():
     os.system('cls') or None
@@ -186,9 +193,15 @@ def cadastraCliente():
     input()
 
     # Gravando as informações no CSV:
-    with open('clientes.csv', "+a", newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow([nome, idade, ende, cpf, quant_dias, preco, acompanhante])
+    if (pessoas_plano == 1):
+        with open('clientes_andar1.csv', "+a", newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([nome, idade, ende, cpf, quant_dias, preco])
+    
+    elif (pessoas_plano == 2):
+        with open('clientes_andar2.csv', "+a", newline='') as file:
+            writer = csv.writer(file)
+            writer.writerow([nome, acompanhante, idade, ende, cpf, quant_dias, preco])
 
 
 def cadastraFornecedor():
@@ -305,7 +318,7 @@ def exibeFornecedores():
     with open('fornecedores.csv', 'r',) as file:
         reader = csv.reader(file)
         for l in reader:
-            print(f'Nome: {l[0]} \nCNPJ: {l[1]} \nEndereço: {l[2]} \nProdutos: {l[3]}')
+            print(f'Nome: {l[0]} \nCNPJ: {l[1]} \nEndereço: {l[2]} \nProdutos: {l[3]} \nPreços Unitarios: R${l[4]} \nQuantidades de pedidos: {l[5]}')
             print("-" * 30)
 
     input("Pressione uma tecla para voltar ao MENU...")
