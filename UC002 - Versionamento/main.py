@@ -21,16 +21,17 @@ def menu(nome):
 
 
 def box(titulo, *caracteristicas):
-    print("-" * 40)
-    print("|", end=None)
-    print(f'{titulo:^38}', end=None)
-    print("-" * 40)
+    print(f"{verde}-" * 30)
+    print("|", end='')
+    print(f'{branco}{titulo:^28}{verde}', end='')
+    print("|")
+    print(f"-" * 30)
 
     for c in caracteristicas:
-        print("|  ", end=None)
-        print(f"{c:<38}")
-        print("|")
-    print("-" * 40)
+        print("|", end='')
+        print(f" {verde}- {branco}{c:^25}", end='')
+        print(f"{verde}|")
+    print(f"{verde}-{branco}" * 30)
 
 
 def cadastraCliente():
@@ -105,6 +106,15 @@ def cadastraCliente():
 
     print("CADASTRADO!")
     sleep(1)
+    limp()
+    menu("Escolha um plano")
+    print('\n')
+
+    box('Diaria', 'R$230,00')
+    box('1º Pacote', 'Uma semana', '10% de desconto', 'Total = R$1449')
+    box('2º Pacote', 'Duas semanas', '15% de desconto', 'Total = R$ 2737')
+    box('3º Pacote', '30 dias', '25% de desconto', 'Total = R$5175')
+    pacote = int(input("Escolha: "))
 
 
 def cadastraFornecedor():
@@ -127,15 +137,6 @@ def cadastraFornecedor():
     with open('fornecedores.csv', "+a", newline='') as file:
         writer = csv.writer(file)
         writer.writerow([nome, cnpj, ende, produtos_for])
-
-
-    menu("Escolha um plano")
-    print('\n')
-
-    box('Diaria', 'R$230,00')
-    box('1º Pacote', 'Uma semana', '10% de desconto', 'Total = R$1449')
-    box('2º Pacote', 'Duas semanas', '15% de desconto', 'Total = R$ 2737')
-    box('3º Pacote', '30 dias', '25% de desconto', 'Total = R$5175')
 
     print("CADASTRADO!")
     sleep(1)
