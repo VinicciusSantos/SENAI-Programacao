@@ -128,7 +128,7 @@ def cadastraCliente():
         box('3º Pacote', '30 dias', '25% de desconto', f'Total = R${preco_pacote3_ind}')
 
         while True:
-            print(f'5 - Quantidade de dias: {dias}')
+            quant_dias = int(input('Quantidade de dias: '))
 
 
     elif pessoas_plano == 2:
@@ -138,7 +138,7 @@ def cadastraCliente():
         box('3º Pacote', '30 dias', '25% de desconto', f'Total = R${preco_pacote3_dupla}')
         
         while True:
-            print(f'5 - Quantidade de dias: {dias}')
+            quant_dias = int(input('Quantidade de dias: '))
 
     
     # Gravando as informações no CSV:
