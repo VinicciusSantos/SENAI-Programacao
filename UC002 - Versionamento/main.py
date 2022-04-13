@@ -404,7 +404,12 @@ def fazerCheckout():
             print(f"{verm}ERRO! Quarto Inválido! {branco}")
 
         else:   # Validar pra ver se tem alguem no quarto indicado
-            pass
+            if andar == 1:
+                if andar1 < quarto:
+                    print(f"{verm}ERRO! Quarto Inválido! {branco}")
+            elif andar == 2:
+                if andar2 < quarto:
+                    print(f"{verm}ERRO! Quarto Inválido! {branco}")
             
 
 while True:     # MENU PRINCIPAL
