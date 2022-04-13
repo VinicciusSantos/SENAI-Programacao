@@ -1,0 +1,38 @@
+-=-=-=- Como estão armazenados os dados dentro dos arquivos CSV: -=-=-=-
+
+No arquivo "clientes_andar1.csv"
+-> São armazenados os dados dos quartos INDIVIDUAIS sendo ocupados;
+-> Cada linha é um cadastro.
+
+[0] = NOME
+[1] = IDADE
+[2] = ENDEREÇO
+[3] = CPF
+[4] = QUANTIDADE DE DIAS QUE FICARÁ NO HOTEL
+[5] = PREÇO QUE IRÁ PAGAR
+[6] = QUARTO QUE ELE IRÁ OCUPAR
+
+No arquivo "clientes_andar2.csv"
+-> São armazenados os dados dos quartos DE CASAL sendo ocupados;
+-> Cada linha é um cadastro.
+
+[0] = NOME DO RESPONSÁVEL
+[1] = NOME DO ACOMPANHANTE
+[2] = IDADE
+[3] = ENDEREÇO
+[4] = CPF
+[5] = QUANTIDADE DE DIAS QUE FICARÁ NO HOTEL
+[6] = PREÇO QUE IRÁ PAGAR
+[7] = QUARTO QUE ELE IRÁ OCUPAR
+
+
+No arquivo "fornecedores.csv"
+-> São armazenados os dados dos fornecedores de produtos/serviços ao hotel;
+-> Cada linha é um cadastrado.
+
+[0] = NOME DA EMPRESA
+[1] = CNPJ
+[2] = ENDEREÇO DA EMPRESA
+[3] = LISTA DE NOMES DOS PRODUTOS
+[4] = LISTA DE PRECOS DOS PRODUTOS
+[5] = LISTA DE QUANTIDADES DOS PRODUTOS

@@ -60,6 +60,8 @@ def cadastraCliente():
     limp()
     andar1 = quant_linhas("clientes_andar1.csv")        # Quantidade de quartos ocupados no 1º andar
     andar2 = quant_linhas("clientes_andar2.csv")        # Quantidade de quartos ocupados no 2º andar
+    disponiveis_andar1 = 10 - andar1
+    disponiveis_andar2 = 10 - andar2
 
     menu("Cadastro de Clientes")
     if (andar1 == 10 and andar2 == 10):
@@ -68,8 +70,8 @@ def cadastraCliente():
         return
     
     else:
-        print(f"< {verde}{10-andar1}{branco} > Quartos individuais disponiveis")
-        print(f"< {verde}{10-andar2}{branco} > Quartos de casal disponiveis")
+        print(f"< {verde}{disponiveis_andar1}{branco} > Quartos individuais disponiveis")
+        print(f"< {verde}{disponiveis_andar2}{branco} > Quartos de casal disponiveis")
 
         while True:
             print('1 - Continuar \n2 - Voltar')
@@ -213,20 +215,33 @@ def cadastraCliente():
         elif cp_dias == 0:
             break
 
+
+    if pessoas_plano == 1:
+        if disponiveis_andar1 < 10:
+            quarto = f'A-0{andar1+1}'
+        else:
+            quarto = f'A-{andar1+1}'
+    
+    elif pessoas_plano == 2:
+        if disponiveis_andar1 < 10:
+            quarto = f'B-0{andar2+1}'
+        else:
+            quarto = f'B-{andar2+1}'
+    
     limp()
-    box('Resumo da reserva', f'Nome: {nome}', f'CPF: {cpf}', f'Quatidade de dias: {quant_dias}', f'Preço Final: R${preco:.2f}', '-=--=--=--=--=--=--=-',f'Plano 1 aplicado {quant_p1} vezes', f'Plano 2 aplicado {quant_p2} vezes', f'Plano 3 aplicado {quant_p3} vezes', f'Diarias aplicadas {quant_diarias} vezes')
+    box('Resumo da reserva', f'Nome: {nome}', f'CPF: {cpf}', f'Quatidade de dias: {quant_dias}', f'Preço Final: R${preco:.2f}', f'Quarto: {quarto}', '-=--=--=--=--=--=--=-',f'Plano 1 aplicado {quant_p1} vezes', f'Plano 2 aplicado {quant_p2} vezes', f'Plano 3 aplicado {quant_p3} vezes', f'Diarias aplicadas {quant_diarias} vezes')
     input()
 
     # Gravando as informações no CSV:
     if (pessoas_plano == 1):
         with open('clientes_andar1.csv', "+a", newline='') as file:
             writer = csv.writer(file)
-            writer.writerow([nome, idade, ende, cpf, quant_dias, preco])
+            writer.writerow([nome, idade, ende, cpf, quant_dias, preco, quarto])
     
     elif (pessoas_plano == 2):
         with open('clientes_andar2.csv', "+a", newline='') as file:
             writer = csv.writer(file)
-            writer.writerow([nome, acompanhante, idade, ende, cpf, quant_dias, preco])
+            writer.writerow([nome, acompanhante, idade, ende, cpf, quant_dias, preco, quarto])
 
 
 def cadastraFornecedor():
@@ -335,13 +350,13 @@ def exibeCadastrados():
     with open('clientes_andar1.csv', 'r',) as file:
         reader = csv.reader(file)
         for l in reader:
-            print(f'Nome: {l[0]} \nIdade: {l[1]} \nEndereço: {l[2]} \nCPF: {l[3]} \nDias: {l[4]}')
+            print(f'Nome: {l[0]} \nIdade: {l[1]} \nEndereço: {l[2]} \nCPF: {l[3]} \nDias: {l[4]} \nPreço: {l[5]} \nQuarto: {l[6]}')
             print("-" * 30)
 
     with open('clientes_andar2.csv', 'r',) as file:
         reader = csv.reader(file)
         for l in reader:
-            print(f'Nome: {l[0]} \nIdade: {l[1]}\nAcompanhante: {l[2]} \nEndereço: {l[3]} \nCPF: {l[4]} \nDias: {l[5]}')
+            print(f'Nome: {l[0]} \nIdade: {l[1]}\nAcompanhante: {l[2]} \nEndereço: {l[3]} \nCPF: {l[4]} \nDias: {l[5]} \nPreço: {l[6]} \nQuarto: {l[7]}')
             print("-" * 30)   
         
 
@@ -360,10 +375,20 @@ def exibeFornecedores():
 
     input("Pressione uma tecla para voltar ao MENU...")
 
+
+def fazerCheckout():
+    limp()
+    menu("Chekout")
+
+    andar = int(input("Qual o andar? "))
+    pass
+
+
 while True:     # MENU PRINCIPAL
     limp()
+    #box('Programa Code +', '1 - Cadastrar Cliente', '2 - Cadastrar fornecedores', '3 - Exibir Clientes', '4 - Exibir Fornecedores', '5 - Fazer Checkout', '6 - Sair')
     menu("Programa Code +")
-    print("1 - Cadastrar Cliente \n2 - Cadastro de fornecedores \n3 - Exibir Clientes \n4 - Exibir Fornecedores \n5 - Sair")
+    print("1 - Cadastrar Cliente \n2 - Cadastrar fornecedores \n3 - Exibir Clientes \n4 - Exibir Fornecedores \n5 - Fazer Checkout \n6 - Sair")
     opc = int(input(f"{verde}Escolha: {branco}"))
 
     if opc == 1: 
@@ -377,8 +402,11 @@ while True:     # MENU PRINCIPAL
 
     elif opc == 4:
         exibeFornecedores()
+
+    elif opc == 4:
+        fazerCheckout()
     
-    elif opc == 5:
+    elif opc == 6:
         limp()
         print(f"{verm}Encerrando programa!{branco}")
         sleep(1)
