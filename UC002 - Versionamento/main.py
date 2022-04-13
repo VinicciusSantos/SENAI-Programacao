@@ -378,11 +378,34 @@ def exibeFornecedores():
 
 def fazerCheckout():
     limp()
+    andar1 = quant_linhas("clientes_andar1.csv")        # Quantidade de quartos ocupados no 1º andar
+    andar2 = quant_linhas("clientes_andar2.csv")        # Quantidade de quartos ocupados no 2º andar
     menu("Chekout")
 
-    andar = int(input("Qual o andar? "))
-    pass
+    while True:             # Recebendo o quarto e validando
+        andar = quarto = errado = 0
+        quarto = str(input("Qual o quarto? ")).strip().upper()
+        print(len(quarto))
 
+        # Verificando qual andar ele está (A - Individual    B - Casal)
+        sleep(1)
+        if quarto[0] == 'A':
+            andar = 1
+        elif quarto[0] == 'B':
+            andar = 2 
+        
+        quarto = f'{andar[2]}+{andar[3]}'
+        if quarto.isnumeric():
+            quarto = int(quarto)
+        else:
+            errado = 1
+
+        if andar == 0 or quarto[1] != '-' or len(quarto != 0 or errado == 1):
+            print(f"{verm}ERRO! Quarto Inválido! {branco}")
+
+        else:   # Validar pra ver se tem alguem no quarto indicado
+            pass
+            
 
 while True:     # MENU PRINCIPAL
     limp()
@@ -403,7 +426,7 @@ while True:     # MENU PRINCIPAL
     elif opc == 4:
         exibeFornecedores()
 
-    elif opc == 4:
+    elif opc == 5:
         fazerCheckout()
     
     elif opc == 6:
