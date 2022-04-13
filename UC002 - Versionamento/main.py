@@ -58,7 +58,30 @@ def box(titulo, *caracteristicas):
 
 def cadastraCliente():
     limp()
+    andar1 = quant_linhas("clientes_andar1.csv")        # Quantidade de quartos ocupados no 1º andar
+    andar2 = quant_linhas("clientes_andar2.csv")        # Quantidade de quartos ocupados no 2º andar
+
     menu("Cadastro de Clientes")
+    if (andar1 == 10 and andar2 == 10):
+        print(f'{verm}Não há quartos disponíveis!{branco}')
+        input("Aperte ENTER para continuar!")
+        return
+    
+    else:
+        print(f"< {verde}{10-andar1}{branco} > Quartos individuais disponiveis")
+        print(f"< {verde}{10-andar2}{branco} > Quartos de casal disponiveis")
+
+        while True:
+            print('1 - Continuar \n2 - Voltar')
+            x = input(f"{verde}Opcão: {branco}")
+            if x == '1':          # Se quiser continuar
+                break
+            elif x == '2':        # Se quiser voltar ao menu
+                return
+
+    limp()
+    menu("Cadastro de Clientes")
+
     nome = str(input("Nome do Cliente: ")).upper().strip()
 
     while True:     # Recebendo e validando as dadas
@@ -303,13 +326,23 @@ def cadastraFornecedor():
 def exibeCadastrados():
     limp()
     menu("mostrando cadastros")
+    andar1 = quant_linhas("clientes_andar1.csv")
+    andar2 = quant_linhas("clientes_andar2.csv")        # Quartos das duplas
+    print(f"Quartos ocupados no 1ª andar: {andar1}")
+    print(f"Quartos ocupados no 2ª andar: {andar2}")
+    print("-=-"*10)
     
-    with open('clientes.csv', 'r',) as file:
+    with open('clientes_andar1.csv', 'r',) as file:
         reader = csv.reader(file)
         for l in reader:
             print(f'Nome: {l[0]} \nIdade: {l[1]} \nEndereço: {l[2]} \nCPF: {l[3]} \nDias: {l[4]}')
             print("-" * 30)
-        
+
+    with open('clientes_andar2.csv', 'r',) as file:
+        reader = csv.reader(file)
+        for l in reader:
+            print(f'Nome: {l[0]} \nIdade: {l[1]}\nAcompanhante: {l[2]} \nEndereço: {l[3]} \nCPF: {l[4]} \nDias: {l[5]}')
+            print("-" * 30)   
         
 
     input("Pressione uma tecla para voltar ao MENU...")
