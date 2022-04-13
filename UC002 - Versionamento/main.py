@@ -1,5 +1,4 @@
 from asyncio.windows_events import NULL
-from tarfile import NUL
 from time import sleep
 import os
 import csv
@@ -188,6 +187,9 @@ def cadastraCliente():
             quant_diarias = cp_dias
             break
 
+        elif cp_dias == 0:
+            break
+
     limp()
     box('Resumo da reserva', f'Nome: {nome}', f'CPF: {cpf}', f'Quatidade de dias: {quant_dias}', f'Preço Final: R${preco:.2f}', '-=--=--=--=--=--=--=-',f'Plano 1 aplicado {quant_p1} vezes', f'Plano 2 aplicado {quant_p2} vezes', f'Plano 3 aplicado {quant_p3} vezes', f'Diarias aplicadas {quant_diarias} vezes')
     input()
@@ -307,6 +309,8 @@ def exibeCadastrados():
         for l in reader:
             print(f'Nome: {l[0]} \nIdade: {l[1]} \nEndereço: {l[2]} \nCPF: {l[3]} \nDias: {l[4]}')
             print("-" * 30)
+        
+        
 
     input("Pressione uma tecla para voltar ao MENU...")
 
