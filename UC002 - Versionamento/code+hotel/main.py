@@ -1,4 +1,3 @@
-from asyncio.windows_events import NULL
 from time import sleep
 import os
 import csv
@@ -32,8 +31,11 @@ def quant_linhas(link):
             cont += 1
     return cont
 
+
 def limp():
-    os.system('cls') or None
+    # Caso use linux: ('clear')
+    # Caso use Windows: ('cls')
+    os.system('clear') or None
 
 
 def menu(nome):
@@ -156,7 +158,7 @@ def cadastraCliente():
             print(f"{verm}ERRO! escolha um plano válido! {branco}")
             sleep(1)
 
-    acompanhante = NULL
+    acompanhante = 0
     if pessoas_plano == 1:
         box('Diaria', f'R${preco_diaria_ind}')
         box('1º Pacote', 'Uma semana', '10% de desconto', f'Total = R${preco_pacote1_ind}')
@@ -378,38 +380,73 @@ def exibeFornecedores():
 
 def fazerCheckout():
     limp()
-    andar1 = quant_linhas("clientes_andar1.csv")        # Quantidade de quartos ocupados no 1º andar
-    andar2 = quant_linhas("clientes_andar2.csv")        # Quantidade de quartos ocupados no 2º andar
+    andar1 = quant_linhas("clientes_andar1.csv")        # Quantidade de QUARTOS ocupados no 1º andar
+    andar2 = quant_linhas("clientes_andar2.csv")        # Quantidade de QUARTOS ocupados no 2º andar
     menu("Chekout")
 
     while True:             # Recebendo o quarto e validando
         andar = quarto = errado = 0
-        quarto = str(input("Qual o quarto? ")).strip().upper()
-        print(len(quarto))
+        input_quarto = str(input("Qual o quarto? ")).strip().upper()
+        # quarto[0] == andar que a pessoa está
+        # quarto[1] == separador: "-" 
+        # quarto[2:3] == quarto que a pessoa está
 
-        # Verificando qual andar ele está (A - Individual    B - Casal)
-        sleep(1)
-        if quarto[0] == 'A':
-            andar = 1
-        elif quarto[0] == 'B':
-            andar = 2 
-        
-        quarto = f'{andar[2]}+{andar[3]}'
-        if quarto.isnumeric():
-            quarto = int(quarto)
-        else:
-            errado = 1
-
-        if andar == 0 or quarto[1] != '-' or len(quarto != 0 or errado == 1):
+        # Verificando o andar (A - Individual | B - Casal)
+        if len(input_quarto) != 4:
             print(f"{verm}ERRO! Quarto Inválido! {branco}")
 
-        else:   # Validar pra ver se tem alguem no quarto indicado
-            if andar == 1:
-                if andar1 < quarto:
-                    print(f"{verm}ERRO! Quarto Inválido! {branco}")
-            elif andar == 2:
-                if andar2 < quarto:
-                    print(f"{verm}ERRO! Quarto Inválido! {branco}")
+        else:
+            if input_quarto[0] == 'A':
+                andar = 1
+            elif input_quarto[0] == 'B':
+                andar = 2 
+
+            quarto = f'{str(input_quarto[2])}{str(input_quarto[3])}'   # número do quarto sempre é formado por 2 algarismos
+            if quarto.isnumeric():
+                quarto = int(quarto)
+            else:
+                errado = 1
+
+            if andar == 0 or input_quarto[1] != '-' or errado == 1:
+                print(f"{verm}ERRO! Quarto Inválido! {branco}")
+
+            else:   # Validar pra ver se tem alguem no quarto indicado
+                if (andar == 1 and andar1 < quarto) or (andar == 2 and andar2 < quarto): 
+                    print(f"{verm}ERRO! Esse quarto já estava vazio! {branco}")
+                else:
+                    break
+    
+    # Imprimindo os dados do cliente para a confirmação do checkout:
+    limp()
+    if andar == 1:      # quartos individuais
+        with open('clientes_andar1.csv', 'r',) as file:
+            reader = csv.reader(file)
+            for i, l in enumerate(reader):
+                if i+1 == quarto:
+                    box(f'Nome: {l[0]}', f'Idade: {l[1]}', f'Endereço: {l[2]}', f'CPF: {l[3]}', f'Dias: {l[4]}', f'Preço: {l[5]}', f'Quarto: {l[6]}')
+                    break
+
+    elif andar == 2:    # quartos de casal
+        with open('clientes_andar2.csv', 'r',) as file:
+            reader = csv.reader(file)
+            for i, l in enumerate(reader):
+                if i+1 == quarto:
+                    box(f'Nome: {l[0]}', f'Acompanhante: {l[1]}', f'Idade: {l[2]}', f'Endereço: {l[3]}', f'CPF: {l[4]}', f'Dias: {l[5]}', f'Preço: {l[6]}', f'Quarto: {l[7]}')
+                    break
+    
+    while True:
+        confirma = (str(input("Confirma o cadastro? [S-N] "))).strip().upper()
+        if confirma == 'N' or confirma == 'S':
+            break
+    
+    if confirma == 'N':
+        print(f"{verm}Chekcout cancelado!{branco}")
+        print("Voltando ao MENU...")
+        sleep(2)
+        return
+
+    print("Beleza meu chapa")
+    x = input()
             
 
 while True:     # MENU PRINCIPAL
