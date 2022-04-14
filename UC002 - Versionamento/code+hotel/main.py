@@ -174,7 +174,13 @@ def cadastraCliente():
         box('2º Pacote', 'Duas semanas', '15% de desconto', f'Total = R${preco_pacote2_dupla}')
         box('3º Pacote', '30 dias', '25% de desconto', f'Total = R${preco_pacote3_dupla}')  
         
-    quant_dias = int(input('Quantidade de dias: '))
+    while True:    
+        quant_dias = str(input('Quantidade de dias: '))
+        if quant_dias.isnumeric():
+            quant_dias = int(quant_dias)
+            break
+        else:
+            print(f"{verm}ERRO! Digite um número válido!{branco}")
           
     cp_dias = quant_dias    # Cópia da variavel dias
 
@@ -218,18 +224,48 @@ def cadastraCliente():
             break
 
 
+    limp()
+    menu('Escolha um quarto')
+    ocupados = []
     if pessoas_plano == 1:
-        if disponiveis_andar1 < 10:
-            quarto = f'A-0{andar1+1}'
-        else:
-            quarto = f'A-{andar1+1}'
+        with open('clientes_andar1.csv', "r", newline='') as file:
+            reader = csv.reader(file)
+            for c in reader:
+                ocupados.append(int(c[6]))
+
+            for i in range(10):
+                print(verde, end='')
+                if i+1 in ocupados:
+                    print(verm, end='')
+
+                if i == 5:
+                    print('\n')
+
+                if i < 9:
+                    print(f'A-0{i+1}{branco}',end='  ')
+                else:
+                    print(f'A-{i+1}{branco}',end='  ')
     
     elif pessoas_plano == 2:
-        if disponiveis_andar1 < 10:
-            quarto = f'B-0{andar2+1}'
-        else:
-            quarto = f'B-{andar2+1}'
+        with open('clientes_andar1.csv', "r", newline='') as file:
+            reader = csv.reader(file)
+            for c in reader:
+                ocupados.append(int(c[6]))
+
+            for i in range(10):
+                print(verde, end='')
+                if i+1 in ocupados:
+                    print(verm, end='')
+                    
+                if i == 5:
+                    print('\n')
+
+                if i < 9:
+                    print(f'A-0{i+1}{branco}',end='  ')
+                else:
+                    print(f'A-{i+1}{branco}',end='  ')
     
+    quarto = input("\nOpção: ").strip().upper()
     limp()
     box('Resumo da reserva', f'Nome: {nome}', f'CPF: {cpf}', f'Quatidade de dias: {quant_dias}', f'Preço Final: R${preco:.2f}', f'Quarto: {quarto}', '-=--=--=--=--=--=--=-',f'Plano 1 aplicado {quant_p1} vezes', f'Plano 2 aplicado {quant_p2} vezes', f'Plano 3 aplicado {quant_p3} vezes', f'Diarias aplicadas {quant_diarias} vezes')
     input()
@@ -238,12 +274,12 @@ def cadastraCliente():
     if (pessoas_plano == 1):
         with open('clientes_andar1.csv', "+a", newline='') as file:
             writer = csv.writer(file)
-            writer.writerow([nome, idade, ende, cpf, quant_dias, preco, quarto])
+            writer.writerow([nome, idade, ende, cpf, quant_dias, preco, quarto[-2:-1]])
     
     elif (pessoas_plano == 2):
         with open('clientes_andar2.csv', "+a", newline='') as file:
             writer = csv.writer(file)
-            writer.writerow([nome, acompanhante, idade, ende, cpf, quant_dias, preco, quarto])
+            writer.writerow([nome, acompanhante, idade, ende, cpf, quant_dias, preco, quarto[-2:-1]])
 
 
 def cadastraFornecedor():
@@ -445,6 +481,7 @@ def fazerCheckout():
         sleep(2)
         return
 
+    # Se o o checkout for confirmado:
     print("Beleza meu chapa")
     x = input()
             

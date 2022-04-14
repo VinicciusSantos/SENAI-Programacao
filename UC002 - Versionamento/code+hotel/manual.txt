@@ -12,6 +12,9 @@ No arquivo "clientes_andar1.csv"
 [5] = PREÇO QUE IRÁ PAGAR
 [6] = QUARTO QUE ELE IRÁ OCUPAR
 
+
+
+
 No arquivo "clientes_andar2.csv"
 -> São armazenados os dados dos quartos DE CASAL sendo ocupados;
 -> Cada linha é um cadastro.
@@ -24,6 +27,8 @@ No arquivo "clientes_andar2.csv"
 [5] = QUANTIDADE DE DIAS QUE FICARÁ NO HOTEL
 [6] = PREÇO QUE IRÁ PAGAR
 [7] = QUARTO QUE ELE IRÁ OCUPAR
+
+
 
 
 No arquivo "fornecedores.csv"
