@@ -135,6 +135,7 @@ def cadastraCliente():
                 if len(cpf) != 11:
                     print(f"{verm}ERRO! Tamanho inválido{branco}")
                 else:
+                    cpf = f'{cpf[:3]}.{cpf[3:6]}.{cpf[6:9]}-{cpf[9:]}'
                     break
 
         elif x == '4':        # editando Endereço
@@ -159,6 +160,7 @@ def cadastraCliente():
             sleep(1)
 
     acompanhante = 0
+    limp()
     if pessoas_plano == 1:
         box('Diaria', f'R${preco_diaria_ind}')
         box('1º Pacote', 'Uma semana', '10% de desconto', f'Total = R${preco_pacote1_ind}')
@@ -388,13 +390,13 @@ def exibeCadastrados():
     with open('clientes_andar1.csv', 'r',) as file:
         reader = csv.reader(file)
         for l in reader:
-            print(f'Nome: {l[0]} \nIdade: {l[1]} \nEndereço: {l[2]} \nCPF: {l[3]} \nDias: {l[4]} \nPreço: {l[5]} \nQuarto: {l[6]}')
+            print(f'Nome: {l[0]} \nIdade: {l[1]} \nEndereço: {l[2]} \nCPF: {l[3]} \nDias: {l[4]} \nPreço: {l[5]} \nQuarto: {l[6]} \nAndar: 1')
             print("-" * 30)
 
     with open('clientes_andar2.csv', 'r',) as file:
         reader = csv.reader(file)
         for l in reader:
-            print(f'Nome: {l[0]} \nIdade: {l[1]}\nAcompanhante: {l[2]} \nEndereço: {l[3]} \nCPF: {l[4]} \nDias: {l[5]} \nPreço: {l[6]} \nQuarto: {l[7]}')
+            print(f'Nome: {l[0]} \nIdade: {l[1]}\nAcompanhante: {l[2]} \nEndereço: {l[3]} \nCPF: {l[4]} \nDias: {l[5]} \nPreço: {l[6]} \nQuarto: {l[7]} \nAndar: 2')
             print("-" * 30)   
         
 
