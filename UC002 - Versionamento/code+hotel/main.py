@@ -1,3 +1,4 @@
+from flask import Flask, render_template
 from time import sleep
 import os
 import csv
@@ -22,6 +23,9 @@ produtos_quant_for = []       # Lista temporária de quantidades de cada produto
 verm = '\033[31m'
 verde = '\033[32m'
 branco = '\033[37m'
+
+app = Flask(__name__)
+
 
 def quant_linhas(link):
     cont = 0
@@ -58,7 +62,45 @@ def box(titulo, *caracteristicas):
     print(f"{verde}-{branco}" * 30)
 
 
+@app.route("/")
+def index():
+    return render_template("home.html")
+    while True:     # MENU PRINCIPAL
+        limp()
+        #box('Programa Code +', '1 - Cadastrar Cliente', '2 - Cadastrar fornecedores', '3 - Exibir Clientes', '4 - Exibir Fornecedores', '5 - Fazer Checkout', '6 - Sair')
+        menu("Programa Code +")
+        print("1 - Cadastrar Cliente \n2 - Cadastrar fornecedores \n3 - Exibir Clientes \n4 - Exibir Fornecedores \n5 - Fazer Checkout \n6 - Sair")
+        opc = int(input(f"{verde}Escolha: {branco}"))
+
+        if opc == 1: 
+            cadastraCliente()
+
+        elif opc == 2: 
+            cadastraFornecedor()
+
+        elif opc == 3: 
+            exibeCadastrados()
+
+        elif opc == 4:
+            exibeFornecedores()
+
+        elif opc == 5:
+            fazerCheckout()
+        
+        elif opc == 6:
+            limp()
+            print(f"{verm}Encerrando programa!{branco}")
+            sleep(1)
+            break
+
+        else:
+            print(f"{verm}ERRO! Opção Inválida!{branco}")
+            sleep(1)
+
+
+@app.route("/cadastroCliente")
 def cadastraCliente():
+    return render_template("cadastoCliente.html")
     limp()
     andar1 = quant_linhas("clientes_andar1.csv")        # Quantidade de quartos ocupados no 1º andar
     andar2 = quant_linhas("clientes_andar2.csv")        # Quantidade de quartos ocupados no 2º andar
@@ -284,6 +326,7 @@ def cadastraCliente():
             writer.writerow([nome, acompanhante, idade, ende, cpf, quant_dias, preco, quarto[-2:-1]])
 
 
+@app.route("/cadastroFornecedor")
 def cadastraFornecedor():
     produtos_nomes_for.clear()
     produtos_preco_for.clear()
@@ -378,6 +421,7 @@ def cadastraFornecedor():
     sleep(1)
 
 
+@app.route("/listaClientes")
 def exibeCadastrados():
     limp()
     menu("mostrando cadastros")
@@ -403,6 +447,7 @@ def exibeCadastrados():
     input("Pressione uma tecla para voltar ao MENU...")
 
 
+@app.route("/listaFornecedores")
 def exibeFornecedores():
     limp()
     menu("mostrando fornecedores")
@@ -416,6 +461,7 @@ def exibeFornecedores():
     input("Pressione uma tecla para voltar ao MENU...")
 
 
+@app.route("/checkout")
 def fazerCheckout():
     limp()
     andar1 = quant_linhas("clientes_andar1.csv")        # Quantidade de QUARTOS ocupados no 1º andar
@@ -486,37 +532,7 @@ def fazerCheckout():
     # Se o o checkout for confirmado:
     print("Beleza meu chapa")
     x = input()
+        
             
-
-while True:     # MENU PRINCIPAL
-    limp()
-    #box('Programa Code +', '1 - Cadastrar Cliente', '2 - Cadastrar fornecedores', '3 - Exibir Clientes', '4 - Exibir Fornecedores', '5 - Fazer Checkout', '6 - Sair')
-    menu("Programa Code +")
-    print("1 - Cadastrar Cliente \n2 - Cadastrar fornecedores \n3 - Exibir Clientes \n4 - Exibir Fornecedores \n5 - Fazer Checkout \n6 - Sair")
-    opc = int(input(f"{verde}Escolha: {branco}"))
-
-    if opc == 1: 
-        cadastraCliente()
-
-    elif opc == 2: 
-        cadastraFornecedor()
-
-    elif opc == 3: 
-        exibeCadastrados()
-
-    elif opc == 4:
-        exibeFornecedores()
-
-    elif opc == 5:
-        fazerCheckout()
-    
-    elif opc == 6:
-        limp()
-        print(f"{verm}Encerrando programa!{branco}")
-        sleep(1)
-        break
-
-    else:
-        print(f"{verm}ERRO! Opção Inválida!{branco}")
-        sleep(1)
-       
+if __name__ == "__main__":
+    app.run(debug=True)

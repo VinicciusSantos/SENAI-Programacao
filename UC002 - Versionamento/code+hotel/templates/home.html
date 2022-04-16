@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code+</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body>
+    <header>
+        <h1>
+            Code+
+        </h1>
+    </header>
+    
+    <div class="traco"></div>
+
+    <div class="menu">
+        
+        <a href="cadastroCliente">
+            <div class="box">
+                <img src="{{ url_for('static', filename='assets/icon_adicionar.png') }}" alt="icon_adicionar">
+                <p>Novo Cliente</p>
+            </div>
+        </a>
+
+        <div class="box">
+            <img src="{{ url_for('static', filename='assets/icon_empresa.png') }}" alt="empresa">
+            <p>Novo Fornecedor</p>
+        </div>
+
+        <div class="box">
+            <img src="{{ url_for('static', filename='assets/icon_quartos.png') }}" alt="quartos">
+            <p>Mostrar Clientes</p>
+        </div>
+
+        <div class="box">
+            <img src="{{ url_for('static', filename='assets/icon_fornecedores.png') }}" alt="fornecedores">
+            <p>Mostrar Fornecedores</p>
+        </div>
+
+        <div class="box">
+            <img src="{{ url_for('static', filename='assets/icon_relatorio.png') }}" alt="relatorio">
+            <p>Relatório</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>Code+ Sistemas de hotéis</p>
+    </footer>
+</body>
+</html>
