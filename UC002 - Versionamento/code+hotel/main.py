@@ -1,4 +1,3 @@
-from flask import Flask, render_template
 from time import sleep
 import os
 import csv
@@ -18,13 +17,20 @@ preco_pacote3_dupla = 9975.00
 produtos_nomes_for = []       # Lista temporária de nomes dos produtos dos fornecedores
 produtos_preco_for = []       # Lista temporária de preços dos produtos dos fornecedores
 produtos_quant_for = []       # Lista temporária de quantidades de cada produto fornecido
+copia_c1 = []                 # Copia dos dados do CSV para serem feitos os checkouts
+copia_c2 = []                 # Copia dos dados do CSV para serem feitos os checkouts
 
 # -=- Códigos de cores -=-
 verm = '\033[31m'
 verde = '\033[32m'
 branco = '\033[37m'
 
-app = Flask(__name__)
+# -=- Definindo os diretórios -=-
+dir_principal = os.path.dirname(__file__)
+dir_dados = os.path.join(dir_principal, 'dados')
+dir_c1 = os.path.join(dir_dados, 'clientes_andar1.csv')
+dir_c2 = os.path.join(dir_dados, 'clientes_andar2.csv')
+dir_for = os.path.join(dir_dados, 'fornecedores.csv')
 
 
 def quant_linhas(link):
@@ -62,48 +68,10 @@ def box(titulo, *caracteristicas):
     print(f"{verde}-{branco}" * 30)
 
 
-@app.route("/")
-def index():
-    return render_template("home.html")
-    while True:     # MENU PRINCIPAL
-        limp()
-        #box('Programa Code +', '1 - Cadastrar Cliente', '2 - Cadastrar fornecedores', '3 - Exibir Clientes', '4 - Exibir Fornecedores', '5 - Fazer Checkout', '6 - Sair')
-        menu("Programa Code +")
-        print("1 - Cadastrar Cliente \n2 - Cadastrar fornecedores \n3 - Exibir Clientes \n4 - Exibir Fornecedores \n5 - Fazer Checkout \n6 - Sair")
-        opc = int(input(f"{verde}Escolha: {branco}"))
-
-        if opc == 1: 
-            cadastraCliente()
-
-        elif opc == 2: 
-            cadastraFornecedor()
-
-        elif opc == 3: 
-            exibeCadastrados()
-
-        elif opc == 4:
-            exibeFornecedores()
-
-        elif opc == 5:
-            fazerCheckout()
-        
-        elif opc == 6:
-            limp()
-            print(f"{verm}Encerrando programa!{branco}")
-            sleep(1)
-            break
-
-        else:
-            print(f"{verm}ERRO! Opção Inválida!{branco}")
-            sleep(1)
-
-
-@app.route("/cadastroCliente")
 def cadastraCliente():
-    return render_template("cadastoCliente.html")
     limp()
-    andar1 = quant_linhas("clientes_andar1.csv")        # Quantidade de quartos ocupados no 1º andar
-    andar2 = quant_linhas("clientes_andar2.csv")        # Quantidade de quartos ocupados no 2º andar
+    andar1 = quant_linhas(dir_c1)        # Quantidade de quartos ocupados no 1º andar
+    andar2 = quant_linhas(dir_c2)        # Quantidade de quartos ocupados no 2º andar
     disponiveis_andar1 = 10 - andar1
     disponiveis_andar2 = 10 - andar2
 
@@ -272,7 +240,7 @@ def cadastraCliente():
     menu('Escolha um quarto')
     ocupados = []
     if pessoas_plano == 1:
-        with open('clientes_andar1.csv', "r", newline='') as file:
+        with open(dir_c1, "r", newline='') as file:
             reader = csv.reader(file)
             for c in reader:
                 ocupados.append(int(c[6]))
@@ -291,7 +259,7 @@ def cadastraCliente():
                     print(f'A-{i+1}{branco}',end='  ')
     
     elif pessoas_plano == 2:
-        with open('clientes_andar1.csv', "r", newline='') as file:
+        with open(dir_c2, "r", newline='') as file:
             reader = csv.reader(file)
             for c in reader:
                 ocupados.append(int(c[6]))
@@ -309,24 +277,29 @@ def cadastraCliente():
                 else:
                     print(f'A-{i+1}{branco}',end='  ')
     
-    quarto = input("\nOpção: ").strip().upper()
+    while True:
+        quarto = input("\nOpção: ").strip().upper()
+        if len(quarto) == 4 and quarto[-2:].isnumeric() and quarto[1] == '-':
+            quarto_int = int(quarto[-2:])
+            if quarto_int <= 10 and quarto_int > 0:
+                break
+
     limp()
     box('Resumo da reserva', f'Nome: {nome}', f'CPF: {cpf}', f'Quatidade de dias: {quant_dias}', f'Preço Final: R${preco:.2f}', f'Quarto: {quarto}', '-=--=--=--=--=--=--=-',f'Plano 1 aplicado {quant_p1} vezes', f'Plano 2 aplicado {quant_p2} vezes', f'Plano 3 aplicado {quant_p3} vezes', f'Diarias aplicadas {quant_diarias} vezes')
     input()
 
     # Gravando as informações no CSV:
     if (pessoas_plano == 1):
-        with open('clientes_andar1.csv', "+a", newline='') as file:
+        with open(dir_c1, "+a", newline='') as file:
             writer = csv.writer(file)
-            writer.writerow([nome, idade, ende, cpf, quant_dias, preco, quarto[-2:-1]])
+            writer.writerow([nome, idade, ende, cpf, quant_dias, preco, quarto_int])
     
     elif (pessoas_plano == 2):
-        with open('clientes_andar2.csv', "+a", newline='') as file:
+        with open(dir_c2, "+a", newline='') as file:
             writer = csv.writer(file)
-            writer.writerow([nome, acompanhante, idade, ende, cpf, quant_dias, preco, quarto[-2:-1]])
+            writer.writerow([nome, acompanhante, idade, ende, cpf, quant_dias, preco, quarto_int])
 
 
-@app.route("/cadastroFornecedor")
 def cadastraFornecedor():
     produtos_nomes_for.clear()
     produtos_preco_for.clear()
@@ -413,7 +386,7 @@ def cadastraFornecedor():
         produtos_preco_for.append(p_preco)
         produtos_quant_for.append(p_quant)
 
-    with open('fornecedores.csv', "+a", newline='') as file:
+    with open(dir_for, "+a", newline='') as file:
         writer = csv.writer(file)
         writer.writerow([nome, cnpj, ende, produtos_nomes_for, produtos_preco_for, produtos_quant_for])
 
@@ -421,23 +394,22 @@ def cadastraFornecedor():
     sleep(1)
 
 
-@app.route("/listaClientes")
 def exibeCadastrados():
     limp()
     menu("mostrando cadastros")
-    andar1 = quant_linhas("clientes_andar1.csv")
-    andar2 = quant_linhas("clientes_andar2.csv")        # Quartos das duplas
+    andar1 = quant_linhas(dir_c1)
+    andar2 = quant_linhas(dir_c2)        # Quartos das duplas
     print(f"Quartos ocupados no 1ª andar: {andar1}")
     print(f"Quartos ocupados no 2ª andar: {andar2}")
     print("-=-"*10)
     
-    with open('clientes_andar1.csv', 'r',) as file:
+    with open(dir_c1, 'r',) as file:
         reader = csv.reader(file)
         for l in reader:
             print(f'Nome: {l[0]} \nIdade: {l[1]} \nEndereço: {l[2]} \nCPF: {l[3]} \nDias: {l[4]} \nPreço: {l[5]} \nQuarto: {l[6]} \nAndar: 1')
             print("-" * 30)
 
-    with open('clientes_andar2.csv', 'r',) as file:
+    with open(dir_c2, 'r',) as file:
         reader = csv.reader(file)
         for l in reader:
             print(f'Nome: {l[0]} \nIdade: {l[1]}\nAcompanhante: {l[2]} \nEndereço: {l[3]} \nCPF: {l[4]} \nDias: {l[5]} \nPreço: {l[6]} \nQuarto: {l[7]} \nAndar: 2')
@@ -447,12 +419,11 @@ def exibeCadastrados():
     input("Pressione uma tecla para voltar ao MENU...")
 
 
-@app.route("/listaFornecedores")
 def exibeFornecedores():
     limp()
     menu("mostrando fornecedores")
 
-    with open('fornecedores.csv', 'r',) as file:
+    with open(dir_for, 'r',) as file:
         reader = csv.reader(file)
         for l in reader:
             print(f'Nome: {l[0]} \nCNPJ: {l[1]} \nEndereço: {l[2]} \nProdutos: {l[3]} \nPreços Unitarios: R${l[4]} \nQuantidades de pedidos: {l[5]}')
@@ -461,19 +432,38 @@ def exibeFornecedores():
     input("Pressione uma tecla para voltar ao MENU...")
 
 
-@app.route("/checkout")
 def fazerCheckout():
+    andar1 = quant_linhas(dir_c1)        # Quantidade de QUARTOS ocupados no 1º andar
+    andar2 = quant_linhas(dir_c2)        # Quantidade de QUARTOS ocupados no 2º andar
+
+    # Preenchendo as listas com as copias dos dados do csv
+    copia_c1.clear()
+    copia_c2.clear()
+    with open(dir_c1, 'r',) as file:
+        reader = csv.reader(file)
+        for i in reader:
+            copia_c1.append(i)
+
+    with open(dir_c2, 'r',) as file:
+        reader = csv.reader(file)
+        for i in reader:
+            copia_c2.append(i)
+
+    # Verificando quais quartos estão ocupados
+    quartos1_ocupados = []
+    quartos2_ocupados = []
+    for c in copia_c1:
+        quartos1_ocupados.append(int(c[6]))
+    for c in copia_c2:
+        quartos2_ocupados.append(int(c[6]))
+
     limp()
-    andar1 = quant_linhas("clientes_andar1.csv")        # Quantidade de QUARTOS ocupados no 1º andar
-    andar2 = quant_linhas("clientes_andar2.csv")        # Quantidade de QUARTOS ocupados no 2º andar
+    print(quartos1_ocupados)
     menu("Chekout")
 
     while True:             # Recebendo o quarto e validando
         andar = quarto = errado = 0
         input_quarto = str(input("Qual o quarto? ")).strip().upper()
-        # quarto[0] == andar que a pessoa está
-        # quarto[1] == separador: "-" 
-        # quarto[2:3] == quarto que a pessoa está
 
         # Verificando o andar (A - Individual | B - Casal)
         if len(input_quarto) != 4:
@@ -485,17 +475,17 @@ def fazerCheckout():
             elif input_quarto[0] == 'B':
                 andar = 2 
 
-            quarto = f'{str(input_quarto[2])}{str(input_quarto[3])}'   # número do quarto sempre é formado por 2 algarismos
+            quarto = input_quarto[-2:]   # número do quarto sempre é formado por 2 algarismos
             if quarto.isnumeric():
                 quarto = int(quarto)
             else:
                 errado = 1
 
-            if andar == 0 or input_quarto[1] != '-' or errado == 1:
+            if andar == 0 or input_quarto[1] != '-' or errado == 1 or quarto > 10 or quarto < 1:
                 print(f"{verm}ERRO! Quarto Inválido! {branco}")
 
             else:   # Validar pra ver se tem alguem no quarto indicado
-                if (andar == 1 and andar1 < quarto) or (andar == 2 and andar2 < quarto): 
+                if (andar == 1 and quarto not in quartos1_ocupados) or (andar == 2 and quarto not in quartos2_ocupados): 
                     print(f"{verm}ERRO! Esse quarto já estava vazio! {branco}")
                 else:
                     break
@@ -503,18 +493,18 @@ def fazerCheckout():
     # Imprimindo os dados do cliente para a confirmação do checkout:
     limp()
     if andar == 1:      # quartos individuais
-        with open('clientes_andar1.csv', 'r',) as file:
+        with open(dir_c1, 'r',) as file:
             reader = csv.reader(file)
             for i, l in enumerate(reader):
-                if i+1 == quarto:
+                if int(l[6]) == int(quarto):
                     box(f'Nome: {l[0]}', f'Idade: {l[1]}', f'Endereço: {l[2]}', f'CPF: {l[3]}', f'Dias: {l[4]}', f'Preço: {l[5]}', f'Quarto: {l[6]}')
                     break
 
     elif andar == 2:    # quartos de casal
-        with open('clientes_andar2.csv', 'r',) as file:
+        with open(dir_c2, 'r',) as file:
             reader = csv.reader(file)
             for i, l in enumerate(reader):
-                if i+1 == quarto:
+                if int(l[6]) == int(quarto):
                     box(f'Nome: {l[0]}', f'Acompanhante: {l[1]}', f'Idade: {l[2]}', f'Endereço: {l[3]}', f'CPF: {l[4]}', f'Dias: {l[5]}', f'Preço: {l[6]}', f'Quarto: {l[7]}')
                     break
     
@@ -526,13 +516,67 @@ def fazerCheckout():
     if confirma == 'N':
         print(f"{verm}Chekcout cancelado!{branco}")
         print("Voltando ao MENU...")
-        sleep(2)
+        sleep(1)
         return
 
     # Se o o checkout for confirmado:
-    print("Beleza meu chapa")
+    if andar == 1:
+        for c in copia_c1:
+            if int(c[6]) == int(quarto):
+                copia_c1.remove(c)
+
+        os.remove(dir_c1)
+        sleep(1)
+        with open(dir_c1, "+a", newline='') as file:
+            writer = csv.writer(file)
+            for i in copia_c1:
+                writer.writerow(i)
+    
+    elif andar == 2:
+        for c in copia_c2:
+            if int(c[7]) == int(quarto):
+                copia_c2.remove(c)
+
+        os.remove(dir_c2)
+        sleep(1)
+        with open(dir_c2, "+a", newline='') as file:
+            writer = csv.writer(file)
+            for i in copia_c2:
+                writer.writerow(i)
+
+    print("Cliente removido com sucesso!")
+    print("Pressione ENTER para voltar ao menu...")
     x = input()
-        
-            
-if __name__ == "__main__":
-    app.run(debug=True)
+
+
+while True:     # MENU PRINCIPAL
+    limp()
+    menu("Programa Code +")
+    print("1 - Cadastrar Cliente \n2 - Cadastrar fornecedores \n3 - Exibir Clientes \n4 - Exibir Fornecedores \n5 - Fazer Checkout \n6 - Sair")
+    opc = int(input(f"{verde}Escolha: {branco}"))
+
+    if opc == 1: 
+        cadastraCliente()
+
+    elif opc == 2: 
+        cadastraFornecedor()
+
+    elif opc == 3: 
+        exibeCadastrados()
+
+    elif opc == 4:
+        exibeFornecedores()
+
+    elif opc == 5:
+        fazerCheckout()
+    
+    elif opc == 6:
+        limp()
+        print(f"{verm}Encerrando programa!{branco}")
+        sleep(1)
+        break
+
+    else:
+        print(f"{verm}ERRO! Opção Inválida!{branco}")
+        sleep(1)
+
