@@ -40,8 +40,8 @@ nav {
 }
 
 .banner {
-    background-repeat: no-repeat;
     background-image: url(Assets/banner_img.jpg);
+    background-repeat: no-repeat;
     background-size: cover;
     height: 400px;
     display: flex;
@@ -81,22 +81,19 @@ nav {
     display: flex;
 }
 
-.info1, info2, info3{
+.info1, .info2, .info3 {
     height: 300px;
     width: 33%;
 }
 
 .info1{
-    background-color: rgb(146, 92, 195);
-    width: 33%;
+    background-color: rgb(165, 128, 201);
 }
 
 .info2{
     background-color: rgb(255, 255, 255);
-    width: 34%;
 }
 
 .info3{
-    background-color: rgb(122, 77, 163);
-    width: 33%;
+    background-color: rgb(140, 114, 163);
 }

@@ -1,0 +1,47 @@
+body{
+    background-color: #D3DFE6;
+}
+
+.tot {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.pag {
+    width: 595px;
+    height: 892px;
+    box-shadow: 0 0 1em rgba(20, 17, 0, 0.694);
+    background-color: rgba(245, 233, 237, 1);
+    padding-top: 40px;
+    padding-left: 70px;
+}
+ 
+.tabelas_top {
+    display: flex;
+}
+
+#top {
+    display: flex;
+}
+
+.desc {
+    margin-left: 300px;
+    text-align: right;
+    margin-top: 30px;
+}
+
+.desc > p{
+    margin: 0px;
+}
+
+
+.tab_foot {
+    text-align: center;
+    display: flex;
+}
+
+.tab_foot > table {
+    padding-right: 15px;
+}
