@@ -1,0 +1,102 @@
+*{
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+#telefone {
+    color: white;
+    background-color: rgb(200, 200, 200);
+    text-align: right;
+    padding-right: 10%;
+    height: 30px;
+}
+
+#logo > img{
+    margin-left: 10%;
+    height: 90px;
+    margin-top: -30px;
+}
+
+nav {
+    display: flex;
+    height: 35px;
+    padding-top: 10px;
+    padding-left: 20%;
+    margin-top: -70px;
+    background-color: rgb(160, 122, 212);
+}
+
+.searchbar > img {
+    margin-top: 4px;
+    height: 15px;
+}
+
+.menu > a {
+    font-size: small;
+    color: white;
+    text-decoration: none;
+    margin: 15px;
+}
+
+.banner {
+    background-repeat: no-repeat;
+    background-image: url(Assets/banner_img.jpg);
+    background-size: cover;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+}
+
+.btn_banner{
+    display: flex;
+    margin: 20px;
+    margin-top: 320px;
+    margin-bottom: 30px;
+    box-shadow: 0 0 1em rgba(20, 17, 0, 0.694);
+}
+
+.img_btn_banner, .txt_btn_banner {
+    height: 20px;
+    padding: 15px;
+}
+
+.img_btn_banner{
+    background-color: rgb(160, 122, 212);
+    width: 20px;
+}
+
+.txt_btn_banner{
+    background-color: white;
+    width: 150px;
+}
+
+.txt_btn_banner > p{
+    color: rgb(160, 122, 212);
+    margin-top: -8px;
+}
+
+.horarios{
+    background-color: rgb(195, 195, 195);
+    display: flex;
+}
+
+.info1, info2, info3{
+    height: 300px;
+    width: 33%;
+}
+
+.info1{
+    background-color: rgb(146, 92, 195);
+    width: 33%;
+}
+
+.info2{
+    background-color: rgb(255, 255, 255);
+    width: 34%;
+}
+
+.info3{
+    background-color: rgb(122, 77, 163);
+    width: 33%;
+}
