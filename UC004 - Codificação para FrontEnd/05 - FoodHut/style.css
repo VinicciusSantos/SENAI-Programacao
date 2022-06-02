@@ -59,7 +59,7 @@ header > a > img {
 
 #heart {
     display: flex;
-    background-color: #f547471a;
+    background-color: #f547473b;
     width: 139px;
     height: 28px;
     border-radius: 100px;
@@ -115,7 +115,6 @@ header > a > img {
 #ponto_title {
     margin-left: -18px;
     margin-top: -5px;
-    font-size: 65px;
 }
 
 #left_main {
