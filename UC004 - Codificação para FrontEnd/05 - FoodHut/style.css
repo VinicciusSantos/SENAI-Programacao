@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
+
+
+:root {
+    --cor1: #191919;
+    --cor2: #f54747;
+    --cor3: #FDC55E;
+    --cor4: #FFFFFF;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    margin-left: 70px;
+}
+
+.bt01 {
+    background-color: var(--cor2);
+    color: var(--cor4);
+    width: 162px;
+    height: 45px;
+    border-radius: 100px;
+}
+
+.menu {
+    float: right;
+    padding-top: 46px;
+    padding-right: 60px;
+}
+
+.menu > a {
+    color: var(--cor1);
+    text-decoration: none;
+    padding: 5px;
+}
+
+.menu > a:hover {
+    color: var(--cor3);
+    text-decoration: none;
+
+}
+
+.menu > .bt01 {
+    margin-left: 96px;
+}
+
+header {
+    margin-bottom: 102px;
+}
+
+header > a > img {
+    margin-top: 24px;
+    width: 121; 
+    height: 78;
+}
+
+#heart {
+    display: flex;
+    background-color: #f547471a;
+    width: 139px;
+    height: 28px;
+    border-radius: 100px;
+    justify-content: center;
+    text-align: center;
+}
+
+#heart > img {
+    margin-top: 3px;
+    margin-right: 4px;
+}
+
+#heart > p {
+    margin-top: 3px;
+}
+
+#title {
+    margin-top: 20px;
+}
+
+#title > img {
+    margin-top: 15px;
+    margin-left: 200px;
+}
+
+#ln01_title {
+    padding-bottom: 10px;
+}
+
+#ln01_title, #ln02_title {
+    display: flex;
+    height: 60px;
+}
+
+.c1_title, .c2_title, .c3_title {
+    font-family: 'Passion One', cursive;
+    font-size: 75px;
+    padding-right: 15px;
+}
+
+.c1_title {
+    color: var(--cor1);
+}
+
+.c2_title {
+    color: var(--cor2);
+}
+
+.c3_title {
+    color: var(--cor3);
+}
+
+#ponto_title {
+    margin-left: -18px;
+    margin-top: -5px;
+    font-size: 65px;
+}
+
+#left_main {
+    width: 471px;
+}
+
+#subtitle {
+    margin-top: 10px;
+}
+
+#subtitle > p {
+    color: #191919;
+    font-size: 24px;
+}
+
+.searchbar {
+    width: 471px;
+    height: 54px;
+    background-color: var(--cor4);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.694);
+    border-radius: 100px;
+    margin-top: 15px;
+}
