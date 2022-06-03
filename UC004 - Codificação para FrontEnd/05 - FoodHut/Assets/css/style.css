@@ -1,0 +1,294 @@
+@import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
+
+
+:root {
+    --cor1: #191919;
+    --cor2: #f54747;
+    --cor3: #FDC55E;
+    --cor4: #FFFFFF;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+body {
+    margin-left: 70px;
+}
+
+.bt01 {
+    background-color: var(--cor2);
+    color: var(--cor4);
+    width: 162px;
+    height: 45px;
+    border-radius: 100px;
+}
+
+.menu {
+    float: right;
+    padding-top: 46px;
+    padding-right: 60px;
+}
+
+.menu > a {
+    color: var(--cor1);
+    text-decoration: none;
+    padding: 5px;
+}
+
+.menu > a:hover {
+    color: var(--cor3);
+    text-decoration: none;
+
+}
+
+.menu > .bt01 {
+    margin-left: 96px;
+}
+
+header {
+    margin-bottom: 102px;
+}
+
+header > a > img {
+    margin-top: 24px;
+    width: 121; 
+    height: 78;
+}
+
+#heart {
+    display: flex;
+    background-color: #f547473b;
+    width: 139px;
+    height: 28px;
+    border-radius: 100px;
+    justify-content: center;
+    text-align: center;
+}
+
+#heart > img {
+    margin-top: 3px;
+    margin-right: 4px;
+}
+
+#heart > p {
+    margin-top: 3px;
+}
+
+#title {
+    margin-top: 20px;
+    font-size: 75px;
+}
+
+#title > img {
+    margin-left: 200px;
+}
+
+#ln01_title {
+    padding-bottom: 10px;
+}
+
+#ln01_title, #ln02_title {
+    display: flex;
+    height: 60px;
+}
+
+#ln02_title {
+    margin-bottom: -40px;
+}
+
+.c1_title, .c2_title, .c3_title {
+    font-family: 'Passion One', cursive;
+    font-weight: 100;
+    padding-right: 15px;
+}
+
+.c1_title {
+    color: var(--cor1);
+}
+
+.c2_title {
+    color: var(--cor2);
+}
+
+.c3_title {
+    color: var(--cor3);
+}
+
+#ponto_title {
+    margin-left: -18px;
+    margin-top: -5px;
+}
+
+#left_main {
+    width: 471px;
+    float: left;
+}
+
+.subtitle {
+    font-family: sans-serif;
+    margin-top: 10px;
+}
+
+.subtitle > p {
+    color: #191919;
+    font-size: 24px;
+}
+
+.searchbar {
+    width: 471px;
+    height: 54px;
+    background-color: var(--cor4);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.694);
+    border-radius: 100px;
+    margin-top: 15px;
+    display: flex;
+}
+
+#lupa1 {
+    margin: 15px;
+}
+
+.searchbar > p {
+    color: #686D77;
+    margin-top: 17px;
+}
+
+#lupa2 {
+    background-color: var(--cor3);
+    border-radius: 100%;
+    margin-top: 8px;
+    margin-left: 285px;
+}
+
+#left_main_nav{
+    display: flex;
+    margin-top: 30px;
+}
+
+#pb01 > p {
+    text-decoration: none;
+    color: #686D77;
+    margin-top: 20px;
+    margin-left: 21px;
+}
+
+#play_button {
+    width: 52px;
+    height: 52px;
+    background: var(--cor4);
+    box-shadow: 0px 15px 30px rgba(223, 105, 81, 0.3);
+    text-align: center;
+    border-radius: 100%;
+    margin-left: 31px;
+}
+
+#play {
+    padding-top: 20px;
+    padding-left: 4px;
+}
+
+#pb01 {
+    display: flex;
+}
+
+#right_main {
+    margin-top: -100px;
+    float: right;
+}
+
+#seta2 {
+    margin-top: 73px;
+}
+
+#main2 {
+    margin-top: 600px;
+}
+
+#tit2 {
+    font-size: 48px;
+    display: flex;
+    justify-content: center;
+}
+
+#sbt02 {
+    text-align: center;
+    font-size: 18px;
+    color: #191919c8;
+}
+
+.produto {
+    width: 310px;
+    height: 516px;
+    text-align: center;
+}
+
+.desc {
+    background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgba(245, 71, 71, 0.197));
+    border-radius: 20px;
+    width: 310px;
+    height: 368px;
+}
+
+.img_produto > img {
+    margin-bottom: -110px;
+}
+
+.img_produto {
+    display: block;
+    margin-bottom: -20px;
+}
+
+#offers1 {
+    margin-top: 200px;
+    display: inline-block;
+    position: absolute;
+}
+
+#elipse_color {
+    width: 248.31px;
+    height: 248.31px;
+    border-radius: 50%;
+    background-image: linear-gradient(to top, rgba(245, 71, 71, 0), rgba(245, 71, 71, 0), rgba(245, 71, 71, 0.106), rgba(253, 197, 94));
+}
+
+#elipse_nocolor {
+    margin-top: -232px;
+    margin-left: 16px;
+    width: 216.31px;
+    height: 216.31px;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+#foto_prod {
+    margin-top: -216px;
+    margin-left: -60px;
+}
+
+#preco_prod {
+    background-color: var(--cor3);
+    width: 60px;
+    height: 60px;
+
+    position: relative;
+    margin-top: -60px;
+    margin-left: 160px;
+    color: var(--cor4);
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Passion One', cursive;
+    
+    border-radius: 50%;
+    border: var(--cor4);
+}
+
+#preco_prod > p {
+    padding: 16px;
+}
+
+
+
+
