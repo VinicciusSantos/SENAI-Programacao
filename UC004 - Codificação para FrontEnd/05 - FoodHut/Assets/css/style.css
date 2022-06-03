@@ -86,13 +86,13 @@ header > a > img {
     margin-left: 200px;
 }
 
-#ln01_title {
-    padding-bottom: 10px;
-}
-
 #ln01_title, #ln02_title {
     display: flex;
     height: 60px;
+}
+
+#ln01_title {
+    padding-bottom: 10px;
 }
 
 #ln02_title {
@@ -122,6 +122,8 @@ header > a > img {
     margin-top: -5px;
 }
 
+/* -=-=-=-=-=- Parte da Lateral esquerda do Menu Principal -=-=-=-=-=- */
+
 #left_main {
     width: 471px;
     float: left;
@@ -147,13 +149,13 @@ header > a > img {
     display: flex;
 }
 
-#lupa1 {
-    margin: 15px;
-}
-
 .searchbar > p {
     color: #686D77;
     margin-top: 17px;
+}
+
+#lupa1 {
+    margin: 15px;
 }
 
 #lupa2 {
@@ -194,6 +196,8 @@ header > a > img {
     display: flex;
 }
 
+/* -=-=-=-=-=- Parte da Lateral direita do Menu Principal -=-=-=-=-=- */
+
 #right_main {
     margin-top: -100px;
     float: right;
@@ -202,6 +206,8 @@ header > a > img {
 #seta2 {
     margin-top: 73px;
 }
+
+/* -=-=-=-=-=- Segunda parte do Menu, onde tem ofertas do dia -=-=-=-=-=- */
 
 #main2 {
     margin-top: 600px;
@@ -222,7 +228,6 @@ header > a > img {
 .produto {
     width: 310px;
     height: 516px;
-    text-align: center;
 }
 
 .desc {
@@ -242,21 +247,22 @@ header > a > img {
 }
 
 #offers1 {
-    margin-top: 200px;
-    display: inline-block;
-    position: absolute;
+    text-align: center;
+    width: 310px;
+    height: 516px;
 }
 
 #elipse_color {
     width: 248.31px;
     height: 248.31px;
+    margin-left: 42px;
     border-radius: 50%;
-    background-image: linear-gradient(to top, rgba(245, 71, 71, 0), rgba(245, 71, 71, 0), rgba(245, 71, 71, 0.106), rgba(253, 197, 94));
+    background-image: linear-gradient(to top, rgba(245, 71, 71, 0), rgba(245, 71, 71, 0.106), rgba(253, 197, 94));
 }
 
 #elipse_nocolor {
     margin-top: -232px;
-    margin-left: 16px;
+    margin-left: 59px;
     width: 216.31px;
     height: 216.31px;
     background-color: #ffffff;
@@ -264,29 +270,31 @@ header > a > img {
 }
 
 #foto_prod {
-    margin-top: -216px;
-    margin-left: -60px;
+    margin-top: -300px;
+    margin-left: 24px;
 }
 
 #preco_prod {
     background-color: var(--cor3);
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
 
     position: relative;
-    margin-top: -60px;
-    margin-left: 160px;
+    margin-top: -50px;
     color: var(--cor4);
     text-align: center;
     font-size: 18px;
     font-family: 'Passion One', cursive;
+    margin-left: 200px;
     
     border-radius: 50%;
-    border: var(--cor4);
+    border-width: 4px;
+    border-style: solid;
+    border-color: var(--cor4);
 }
 
-#preco_prod > p {
-    padding: 16px;
+#preco_prod > p {   
+    padding: 13px;
 }
 
 
