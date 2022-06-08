@@ -19,20 +19,19 @@
         </div>
     </header>
     <main>
-        <div id="heart">
-            <img src="Assets/images/coração.png" alt="Coração" width="20" height="20">
-            <p>People Trust us</p>
-        </div>
-
         <div id="main1">
+            <div id="heart">
+                <img src="Assets/images/coração.png" alt="Coração" width="20" height="20">
+                <p>People Trust us</p>
+            </div>
             <div id="left_main">
-                <div id="title">
-                    <div id="ln01_title">
+                <div class="title">
+                    <div class="ln01_title">
                         <p class="c1_title">We're</p>
                         <p class="c2_title">Serius</p>
                         <p class="c1_title">for</p>
                     </div>
-                    <div id="ln02_title">
+                    <div class="ln02_title">
                         <p class="c2_title">Food</p>
                         <p class="c1_title">&</p>
                         <p class="c3_title">Delivery</p>
@@ -78,6 +77,7 @@
             </div>
 
             <div id="offers1">
+                <!--Primeiro Produto-->
                 <div class="produto">
                     <div class="img_produto">
                         <div id="elipse_color"></div>
@@ -85,18 +85,144 @@
                     </div>
                     <img id="foto_prod" src="Assets/images/Comidas/comida1_1.png" alt="Comida">
                     <div id="preco_prod"><p>10$</p></div>
-                </div>
-                <div id="avaliacoes">
-                    <div id="ava_photos">
-                        <img src="Assets/images/Avaliacoes/ava1_1.png" alt="Avaliaçao" width="38" height="38">
-                        <img src="Assets/images/Avaliacoes/ava1_2.png" alt="Avaliaçao" width="38" height="38">
-                        <img src="Assets/images/Avaliacoes/ava1_3.png" alt="Avaliaçao" width="38" height="38">
+
+                    <div id="avaliacoes">
+                        <div id="ava_tot">
+                            <div id="ava_photos">
+                                <img id="ava_photo1" src="Assets/images/Avaliacoes/ava1_1.png" alt="Avaliaçao" width="38" height="38">
+                                <img id="ava_photo2" src="Assets/images/Avaliacoes/ava1_2.png" alt="Avaliaçao" width="38" height="38">
+                                <img id="ava_photo3" src="Assets/images/Avaliacoes/ava1_3.png" alt="Avaliaçao" width="38" height="38">
+                            </div>
+                            <div id="av_nota">
+                                <img src="Assets/images/Avaliacoes/Star.png" alt="Avaliação Estrela" width="28" height="28">
+                                <p>(4.5)</p>
+                            </div>
+                        </div>
+                        <div id="descri_prod">
+                            <h2>Kebab</h2>
+                            <div>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                            </div>
+                        </div>
+                        <button class="bt01">Download App</button>
                     </div>
-                    <img src="Assets/images/Avaliacoes/Star.png" alt="Avaliação Estrela" width="28" height="28">
-                    <p>(4.5)</p>
+                </div>
+                
+                <!--Segundo Produto-->
+                <div class="produto">
+                    <div class="img_produto">
+                        <div id="elipse_color"></div>
+                        <div id="elipse_nocolor"></div>
+                    </div>
+                    <img id="foto_prod" src="Assets/images/Comidas/comida1_2.png" alt="Comida">
+                    <div id="preco_prod"><p>10$</p></div>
+
+                    <div id="avaliacoes">
+                        <div id="ava_tot">
+                            <div id="ava_photos">
+                                <img id="ava_photo1" src="Assets/images/Avaliacoes/ava2_1.png" alt="Avaliaçao" width="38" height="38">
+                                <img id="ava_photo2" src="Assets/images/Avaliacoes/ava2_2.png" alt="Avaliaçao" width="38" height="38">
+                                <img id="ava_photo3" src="Assets/images/Avaliacoes/ava2_3.png" alt="Avaliaçao" width="38" height="38">
+                            </div>
+                            <div id="av_nota">
+                                <img src="Assets/images/Avaliacoes/Star.png" alt="Avaliação Estrela" width="28" height="28">
+                                <p>(4.5)</p>
+                            </div>
+                        </div>
+                        <div id="descri_prod">
+                            <h2>Kebab</h2>
+                            <div>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                            </div>
+                        </div>
+                        <button class="bt01">Download App</button>
+                    </div>
+                </div>
+
+                <!--Terceiro Produto-->
+                <div class="produto">
+                    <div class="img_produto">
+                        <div id="elipse_color"></div>
+                        <div id="elipse_nocolor"></div>
+                    </div>
+                    <img id="foto_prod" src="Assets/images/Comidas/comida1_3.png" alt="Comida">
+                    <div id="preco_prod"><p>10$</p></div>
+
+                    <div id="avaliacoes">
+                        <div id="ava_tot">
+                            <div id="ava_photos">
+                                <img id="ava_photo1" src="Assets/images/Avaliacoes/ava3_1.png" alt="Avaliaçao" width="38" height="38">
+                                <img id="ava_photo2" src="Assets/images/Avaliacoes/ava3_2.png" alt="Avaliaçao" width="38" height="38">
+                                <img id="ava_photo3" src="Assets/images/Avaliacoes/ava3_3.png" alt="Avaliaçao" width="38" height="38">
+                            </div>
+                            <div id="av_nota">
+                                <img src="Assets/images/Avaliacoes/Star.png" alt="Avaliação Estrela" width="28" height="28">
+                                <p>(4.5)</p>
+                            </div>
+                        </div>
+                        <div id="descri_prod">
+                            <h2>Kebab</h2>
+                            <div>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                            </div>
+                        </div>
+                        <button class="bt01">Download App</button>
+                    </div>
+                </div>
+
+                <!--Quarto Produto-->
+                <div class="produto">
+                    <div class="img_produto">
+                        <div id="elipse_color"></div>
+                        <div id="elipse_nocolor"></div>
+                    </div>
+                    <img id="foto_prod" src="Assets/images/Comidas/comida1_4.png" alt="Comida">
+                    <div id="preco_prod"><p>10$</p></div>
+
+                    <div id="avaliacoes">
+                        <div id="ava_tot">
+                            <div id="ava_photos">
+                                <img id="ava_photo1" src="Assets/images/Avaliacoes/ava4_1.png" alt="Avaliaçao" width="38" height="38">
+                                <img id="ava_photo2" src="Assets/images/Avaliacoes/ava4_2.png" alt="Avaliaçao" width="38" height="38">
+                                <img id="ava_photo3" src="Assets/images/Avaliacoes/ava4_3.png" alt="Avaliaçao" width="38" height="38">
+                            </div>
+                            <div id="av_nota">
+                                <img src="Assets/images/Avaliacoes/Star.png" alt="Avaliação Estrela" width="28" height="28">
+                                <p>(4.5)</p>
+                            </div>
+                        </div>
+                        <div id="descri_prod">
+                            <h2>Kebab</h2>
+                            <div>
+                                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry</p>
+                            </div>
+                        </div>
+                        <button class="bt01">Download App</button>
+                    </div>
                 </div>
             </div>
 
+        </div>
+
+        <div id="main3">
+            <div id="left_main3">
+                <img src="Assets/images/Chef.png" alt="Chef" width="553.53" height="601.05">
+            </div>
+
+            <div id="right_main3">
+                <div class="title" id="title3">
+                    <div class="ln01_title">
+                        <p class="c1_title">We are</p>
+                        <p class="c2_title">more</p>
+                        <p class="c1_title">than</p>
+                    </div>
+                    <div class="ln02_title">
+                        <p class="c3_title">Multiple</p>
+                        <p class="c1_title">Service</p>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </main>
 </body>
