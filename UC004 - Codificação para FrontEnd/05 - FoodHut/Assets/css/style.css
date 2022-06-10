@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Passion+One&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Passion+One&family=Poppins:wght@300;600&display=swap');
 
 :root {
     --cor1: #191919;
@@ -11,7 +10,7 @@
 * {
     margin: 0px;
     padding: 0px;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 body {
@@ -393,7 +392,7 @@ header > a > img {
 }
 
 #avaliacoes > button {
-    margin-top: 47px;
+    margin-top: 17px;
 }
 
 
@@ -463,10 +462,11 @@ header > a > img {
 
 
 #main4 {
-    margin-top: 900px;
+    margin-top: 1000px;
     width: 100%;
     max-width: 1400px;
-    display: inline-block;
+    display: inline;
+    position: absolute;
 }
 
 .tit4 {
@@ -492,8 +492,8 @@ header > a > img {
 /* -=-=-=-=-=-=-=-=-=- Main 5 -=-=-=-=-=-=-=-=-=- */
 
 #main5 {
-    margin-top: 250px;
     width: 100%;
+    margin-top: 2500px;
     height: 682px;
     max-width: 1400px;
     display: inline-block;
@@ -535,15 +535,29 @@ header > a > img {
 
 footer {
     margin-top: 200px;
-    width: 100%;
     max-width: 1400px;
     display: inline-block;
     text-align: left;
+    position: relative;
+    color: var(--cor1);
 }
 
 footer > nav {
+    width: 100%;
     padding: 40px;
     display: flex;
+}
+
+.footerElement {
+    padding: 20px;
+}
+
+.footerElement > ul {
+    list-style-type: none;
+}
+
+.footerElement > ul > li {
+    margin-top: 10px;
 }
 
 .footerElement > h2 {
@@ -567,4 +581,22 @@ footer > nav {
 
 .social_bar > a {
     margin: 10px;
+}
+
+#footer_copyright {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#text2_footer {
+    width: 379px;
+    font-size: 20px;
+}
+
+#imput_footer {
+    background-color: #1919191a;
+    border: none;
+    border-radius: 38px;
+    margin-top: 20px;
+    padding: 15px;
 }
