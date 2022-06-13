@@ -610,3 +610,8 @@ footer > nav {
     margin-top: 20px;
     padding: 15px;
 }
+
+.footerElement > ul > li > a {
+    text-decoration: none;
+    color: black;
+}
