@@ -1,0 +1,507 @@
+@import url('https://fonts.googleapis.com/css2?family=Passion+One&family=Poppins:wght@300;600&display=swap');
+
+:root {
+    --cor1: #191919;
+    --cor2: #f54747;
+    --cor3: #FDC55E;
+    --cor4: #FFFFFF;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+body > div{
+    max-width: 1600px;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Botões -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+.bt01 {
+    background-color: var(--cor2);
+    color: var(--cor4);
+    height: 45px;
+    border-radius: 100px;
+    border: none;
+
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.bt01:hover {
+    background-color: #d63737;
+}
+
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Searchbar -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+#searchbar1 {
+    border: none;
+    outline: none;
+    background-color: var(--cor4);
+    width: 100%;
+    height: 54px;
+}
+
+.searchbar {
+    width: 471px;
+    height: 54px;
+    background-color: var(--cor4);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.694);
+    border-radius: 100px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.searchbar > p {
+    color: #686D77;
+    margin-top: 17px;
+}
+
+#lupa1 {
+    margin: 15px;
+}
+
+#lupa2 {
+    background-color: var(--cor3);
+    border-radius: 100%;
+    margin-top: 6px;
+    margin-right: 5px;
+    margin-left: 10px;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Titulos -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+.title {
+    margin-top: 20px;
+    font-size: 75px;
+}
+
+.title > img {
+    margin-left: 200px;
+}
+
+.ln01_title, .ln02_title {
+    display: flex;
+    height: 60px;
+}
+
+.ln01_title {
+    padding-bottom: 10px;
+}
+
+.c1_title, .c2_title, .c3_title {
+    font-family: 'Passion One', cursive;
+    font-weight: 100;
+    padding-right: 15px;
+}
+
+.c1_title {
+    color: var(--cor1);
+}
+
+.c2_title {
+    color: var(--cor2);
+}
+
+.c3_title {
+    color: var(--cor3);
+}
+
+#ponto_title {
+    margin-left: -18px;
+    margin-top: -5px;
+}
+
+
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Header -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+header {
+    width: 100%;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    max-width: 1600px;
+}
+
+#logo {
+    margin-left: calc(10px + 2vh);
+    width: 121px;
+    height: 78px;
+    float: left;
+}
+
+@media screen and (max-width: 1024px) {
+    header {
+        margin-left: calc(10px + 2vh);
+        margin-right: calc(10px + 2vh);
+    }
+    
+    .menu {
+        display: none;
+    }
+
+    #menu_icon {
+        float: right;
+        margin-top: calc(10px + 2vh);
+        margin-right: calc(10px + 2vh);
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    #menu_icon {
+        display: none;
+    }
+    
+    .menu {
+        margin-top: 20px;
+        float: right;
+        margin-right: calc(10px + 2vh);
+    }
+    
+    .menu > a {
+        color: var(--cor1);
+        text-decoration: none;
+        padding: 2vw;
+    }
+    
+    .menu > a:hover {
+        color: var(--cor2);
+        text-decoration: none;
+    }
+}
+
+
+
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Main1 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+#heart {
+    display: flex;
+    background-color: #f547473b;
+    width: 165px;
+    height: 28px;
+    border-radius: 100px;
+    justify-content: center;
+    text-align: center;
+}
+
+#heart > img {
+    margin-top: 3px;
+    margin-right: 4px;
+}
+
+#heart > p {
+    margin-top: 3px;
+}
+
+#foto_main1 {
+    width: 100%;
+    height: auto; 
+}
+
+#left_main_nav{
+    display: flex;
+    margin-top: 30px;
+}
+
+#pb01 > p {
+    text-decoration: none;
+    color: #686D77;
+    margin-top: 12px;
+    margin-left: 21px;
+}
+
+#play_button {
+    width: 52px;
+    height: 52px;
+    background: var(--cor4);
+    box-shadow: 0px 15px 30px rgba(223, 105, 81, 0.3);
+    text-align: center;
+    border-radius: 100%;
+    margin-left: 31px;
+}
+
+#play {
+    padding-top: 16px;
+    padding-left: 4px;
+}
+
+#pb01 {
+    display: flex;
+    justify-content: space-between;
+}
+
+#main1 {
+    display: flex;
+    margin-left: calc(10px + 2vh);
+}
+
+/* Pequeno */
+@media screen and (max-width: 1024px) {
+    #main1 {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    #left_main1{
+        margin-top: 50px;
+        margin-left: calc();
+    }
+
+    .subtitle {
+        margin-top: 40px;
+        margin-right: calc(10px + 2vh);
+        font-size: 20px;
+    }
+
+    .title{
+        font-size: calc(45px + 5vw);
+    }
+
+    .searchbar {
+        width: 95%;
+    }
+}
+
+/* Grande */
+@media screen and (min-width: 1025px) {
+    #main1{
+        margin-top: 80px;
+    }
+
+    #left_main1 {
+        float: left;
+    }
+    
+    #right_main1 {
+        margin-top: -50px;
+        float: right;
+    }
+
+    .subtitle {
+        margin-top: 30px;
+        max-width: 517px;
+        font-size: 24px;
+    }
+
+    .title {
+        font-size: 75px;
+    }
+}
+
+
+
+
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Main2 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+#main2 {
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#tit2 {
+    display: flex;
+}
+
+#sbt02 {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 18px;
+    color: #191919c8; 
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+#tit2 {
+    font-size: 48px;
+}
+
+.produto {
+    width: 310px;
+    height: 516px;
+    padding: 10px;
+    display: inline-block;
+}
+
+.desc {
+    background-image: linear-gradient(to bottom, rgb(255, 255, 255), rgba(245, 71, 71, 0.197));
+    border-radius: 20px;
+    width: 310px;
+    height: 368px;
+}
+
+.img_produto > img {
+    margin-bottom: -110px;
+}
+
+.img_produto {
+    display: block;
+    margin-bottom: -20px;
+}
+
+#offers1, #offers2, #offers3 {
+    text-align: center;
+    height: 516px;
+    margin-top: 50px;
+    text-align: center;
+    width: 100%;
+}
+
+#elipse_color {
+    width: 248.31px;
+    height: 248.31px;
+    margin-left: 42px;
+    border-radius: 50%;
+    background-image: linear-gradient(to top, rgba(245, 71, 71, 0), rgba(245, 71, 71, 0.211), rgba(253, 197, 94));
+}
+
+#elipse_nocolor {
+    margin-top: -232px;
+    margin-left: 59px;
+    width: 216.31px;
+    height: 216.31px;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+#foto_prod {
+    margin-top: -300px;
+    margin-left: 24px;
+}
+
+#preco_prod {
+    background-color: var(--cor3);
+    width: 50px;
+    height: 50px;
+
+    position: relative;
+    margin-top: -50px;
+    color: var(--cor4);
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Passion One', cursive;
+    margin-left: 200px;
+    
+    border-radius: 50%;
+    border-width: 4px;
+    border-style: solid;
+    border-color: var(--cor4);
+}
+
+#preco_prod > p {   
+    padding: 13px;
+}
+
+#avaliacoes {
+    width: 310px;
+    height: 368px;
+    margin-top: -115px;
+    margin-left: 13px;
+    background-image: linear-gradient(to top, rgba(245, 71, 71, 0.169), rgb(255,255,255,0));
+    border-radius: 20px;
+}
+
+#ava_tot {
+    padding-top: 140px;
+    margin-left: 80px;
+    display: flex;
+}
+
+#ava_photo2, #ava_photo3 {
+    margin-left: -20px;
+}
+
+#av_nota {
+    display: flex;
+    width: 72px;
+    height: 28px;
+}
+
+#av_nota > img {
+    margin-top: 4px;
+    margin-left: 10px;
+}
+
+#av_nota > p {
+    margin-top: 8px;
+    margin-left: 5px;
+}
+
+#descri_prod > h2 {
+    color: var(--cor2);
+    margin-top: 30px;
+}
+
+#descri_prod > div {
+    margin-left: 30px;
+}
+
+#descri_prod > div > p {
+    color: var(--cor1);
+        max-width: 243px;
+}
+
+#avaliacoes > button {
+    margin-top: 17px;
+}
+
+/* Pequeno */
+@media screen and (max-width: 1024px) {
+    #p2_off1, #p3_off1, #p4_off1{
+        display: none;
+    }
+}
+
+/* Grande */
+@media screen and (min-width: 1025px) {
+    .subtitle {
+        max-width: 856px;
+    }
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Main3 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+#main3 {
+    display: flex;
+    margin-top: 100px;
+}
+
+/* Pequeno */
+@media screen and (max-width: 1024px) {
+    #main3 {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Grande */
+@media screen and (min-width: 1025px) {
+    #main3 {
+        
+    }
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Main2 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+@media screen and (max-width: 1024px) {
+
+}
+
+@media screen and (min-width: 1025px) {
+    
+}
