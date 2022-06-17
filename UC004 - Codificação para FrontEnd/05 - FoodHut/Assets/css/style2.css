@@ -185,7 +185,8 @@ header {
     .menu > a {
         color: var(--cor1);
         text-decoration: none;
-        padding: 2vw;
+        padding: calc(2vw - 5px);
+        padding: max(23px);
     }
     
     .menu > a:hover {
@@ -257,6 +258,10 @@ header {
 
 #main1 {
     display: flex;
+}
+
+#subtitle1 {
+    max-width: 517px;
 }
 
 /* Pequeno */
@@ -557,10 +562,6 @@ header {
     #ListaMain3 {
         flex-direction: column;
     }
-
-    #offers3, #p2_off2, #p3_off2, #p4_off2{
-        display: none;
-    }
 }
 
 /* Grande */
@@ -605,10 +606,32 @@ header {
 }
 
 .btn_list {
+    width: 100%;
     margin-top: 40px;
-    display: flex;
+    display: inherit;
     justify-content: space-evenly;
 }
+
+/* 6 Botões */
+@media screen and (max-width: 860px) {
+    #p2_off2, #p1_off3, #p2_off3, #bt7_lista3, #bt8_lista3, #offers3 {
+        display: none;
+    }
+}
+
+/* 4 Botões */
+@media screen and (max-width: 680px) {
+   #bt4_lista3, #bt5_lista3 {
+        display: none;
+    }
+}
+
+/* 3 Botões */
+@media screen and (max-width:500px) {
+    #bt3_lista3{
+         display: none;
+     }
+ }
 
 @media screen and (max-width: 1024px) {
     #tit4-1 {
@@ -626,7 +649,182 @@ header {
     }
 }
 
+@media screen and (max-width: 1140px) {
+    #p3_off2, #p3_off3{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1445px) {
+    #p4_off2, #p4_off3 {
+        display: none;
+    }
+}
+
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Main5 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+#main5 {
+    margin-top: 100px;
+    display: flex;
+}
+
+#left_main5 {
+    display: flex;
+    flex-direction: column;
+}
+
+#tit5-2 > div { 
+    display: flex;
+    justify-content: center;
+}
+
+#tit5-1, #tit5-2 { 
+    font-size: max(60px);
+}
+
+@media screen and (max-width: 1024px) {
+    #tit5-1 {
+        display: none;
+    }
+
+    #tit5-2 {
+        font-size: 10vw;
+    }
+
+    #main5 {
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    #right_main5 > img {
+        width: 100%;
+        height: auto;
+    }
+
+    #subtitle5 {
+        display: flex;
+        justify-content: center;
+        font-size: 20px;
+        margin-left: calc(10px + 2vh);
+        margin-right: calc(10px + 2vh);
+    }
+
+    .download_stores {
+        margin-left: calc(10px + 2vh);
+        margin-right: calc(10px + 2vh);
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    #tit5-2 {
+        display: none;
+    }
+    #right_main5 > img {
+        width: 100%;
+    }
+
+    #subtitle5 {
+        width: 550px;
+    }
+
+    #left_main5 {
+        float: left;
+    }
+
+    #right_main5 {
+        margin-top: -100px;
+        float: right;
+    }
+
+    .download_stores {
+        margin-top: 40px;
+    }
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- footer -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+footer {
+    margin-top: 100px;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: var(--cor1);
+}
+
+footer > nav > div, footer > nav {
+    justify-content: center;
+    width: 100%;
+    padding: 40px;
+    display: flex;
+}
+
+.footerElement {
+    padding: 20px;
+}
+
+.footerElement > ul {
+    list-style-type: none;
+}
+
+.footerElement > ul > li {
+    margin-top: 10px;
+}
+
+.footerElement > h2 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    color: var(--cor2);
+}
+
+#footer1 {
+    width: 325px;
+}
+
+#text1_footer {
+    width: 325px;
+    font-size: 20px;
+}
+
+.social_bar {
+    margin-top: 20px;
+}
+
+.social_bar > a {
+    margin: 10px;
+}
+
+#footer_copyright {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#text2_footer {
+    width: 379px;
+    font-size: 20px;
+}
+
+#imput_footer {
+    background-color: #1919191a;
+    border: none;
+    border-radius: 38px;
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.footerElement > ul > li > a {
+    text-decoration: none;
+    color: black;
+}
+
+@media screen and (max-width: 1300px) {
+    footer > nav {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
 
 @media screen and (max-width: 1024px) {
 
@@ -635,4 +833,3 @@ header {
 @media screen and (min-width: 1025px) {
     
 }
-
