@@ -666,6 +666,7 @@ header {
 #main5 {
     margin-top: 100px;
     display: flex;
+    justify-content: center;
 }
 
 #left_main5 {
@@ -749,6 +750,7 @@ footer {
     max-width: 1400px;
     display: flex;
     flex-direction: column;
+    align-items: center;
     text-align: left;
     color: var(--cor1);
 }
@@ -758,6 +760,11 @@ footer > nav > div, footer > nav {
     width: 100%;
     padding: 40px;
     display: flex;
+}
+
+#footer_subscribe {
+    display: flex;
+    align-items: center;
 }
 
 .footerElement {
@@ -809,7 +816,6 @@ footer > nav > div, footer > nav {
     background-color: #1919191a;
     border: none;
     border-radius: 38px;
-    margin-top: 20px;
     padding: 15px;
 }
 
@@ -824,12 +830,4 @@ footer > nav > div, footer > nav {
         flex-direction: column;
         align-items: center;
     }
-}
-
-@media screen and (max-width: 1024px) {
-
-}
-
-@media screen and (min-width: 1025px) {
-    
 }
