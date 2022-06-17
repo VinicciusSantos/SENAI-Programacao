@@ -17,6 +17,8 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-left: calc(10px + 2vh);
+    margin-right: calc(10px + 2vh);
 }
 
 body > div{
@@ -41,6 +43,25 @@ body > div{
     background-color: #d63737;
 }
 
+.bt02 {
+    border-color: #5b5b5b;
+    background-color: var(--cor4);
+    color: var(--cor1);
+
+    border-radius: 100px;
+    border: 2px #5b5b5b;
+
+    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-style: outset;
+
+    height: 45px;
+}
+
+.bt02:hover {
+    background-color: rgb(226, 226, 226);
+} 
 
 /* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Searchbar -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 
@@ -129,32 +150,25 @@ body > div{
 
 header {
     width: 100%;
-    margin-top: 3vh;
+    margin-top: 20px;
     margin-bottom: 3vh;
     max-width: 1600px;
 }
 
 #logo {
-    margin-left: calc(10px + 2vh);
     width: 121px;
     height: 78px;
     float: left;
 }
 
 @media screen and (max-width: 1024px) {
-    header {
-        margin-left: calc(10px + 2vh);
-        margin-right: calc(10px + 2vh);
-    }
-    
     .menu {
         display: none;
     }
 
     #menu_icon {
         float: right;
-        margin-top: calc(10px + 2vh);
-        margin-right: calc(10px + 2vh);
+        margin-top: 35px;
     }
 }
 
@@ -166,7 +180,6 @@ header {
     .menu {
         margin-top: 20px;
         float: right;
-        margin-right: calc(10px + 2vh);
     }
     
     .menu > a {
@@ -244,7 +257,6 @@ header {
 
 #main1 {
     display: flex;
-    margin-left: calc(10px + 2vh);
 }
 
 /* Pequeno */
@@ -256,12 +268,10 @@ header {
 
     #left_main1{
         margin-top: 50px;
-        margin-left: calc();
     }
 
     .subtitle {
         margin-top: 40px;
-        margin-right: calc(10px + 2vh);
         font-size: 20px;
     }
 
@@ -461,8 +471,20 @@ header {
 }
 
 /* Pequeno */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 800px) {
     #p2_off1, #p3_off1, #p4_off1{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1140px) {
+    #p3_off1{
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1445px) {
+    #p4_off1{
         display: none;
     }
 }
@@ -481,22 +503,130 @@ header {
     margin-top: 100px;
 }
 
+#foto_main3 {
+    width: 100%;
+    height: auto; 
+}
+
+#subtitle3 > p {
+    color: #383838;
+    font-size: 20px;
+    text-align: left;
+    margin-top: 15px;
+}
+
+#ListaMain3 {
+    display: flex;
+}
+
+#ListaMain3 > ul {
+    list-style-type: none;
+}
+
+#ListaMain3 > ul > li {
+    font-size: 20px;
+    padding-top: 30px;
+    display: flex;
+}
+
+#ListaMain3 > ul > li > p {
+    padding-left: 10px;
+}
+
+#btn_l3 {
+    margin-top: 20px;
+}
+
+
 /* Pequeno */
 @media screen and (max-width: 1024px) {
     #main3 {
         flex-direction: column;
         align-items: center;
     }
+
+    #title3 {
+        font-size: 10vw;
+        margin-bottom: 5vw;
+    }
+
+    #title3 > div {
+        margin-bottom: 2%;
+    }
+
+    #ListaMain3 {
+        flex-direction: column;
+    }
+
+    #offers3, #p2_off2, #p3_off2, #p4_off2{
+        display: none;
+    }
 }
 
 /* Grande */
 @media screen and (min-width: 1025px) {
-    #main3 {
-        
+    #title3 {
+        font-size: 6vw;
+        font-size: max(60px);
+    }
+
+    #foto_main3 {
+        width: 40vw;
+        min-width: 500px;
+        max-width: 600px;
+    }
+
+    #Lista_m3_pt2 {
+        margin-left: 30px;
+    }
+
+    #subtitle3 {
+        max-width: 690px;
     }
 }
 
-/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Main2 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Main4 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+
+#main4 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 100px;
+}
+
+.tit4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: max(60px);
+}
+
+.tit4 > div {
+    display: flex;
+}
+
+.btn_list {
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+@media screen and (max-width: 1024px) {
+    #tit4-1 {
+        display: none;
+    }
+
+    #tit4-2 {
+        font-size: 10vw;
+    }
+}
+
+@media screen and (min-width: 1025px) {
+    #tit4-2 {
+        display: none;
+    }
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- Main5 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
 
 @media screen and (max-width: 1024px) {
 
@@ -505,3 +635,4 @@ header {
 @media screen and (min-width: 1025px) {
     
 }
+

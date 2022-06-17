@@ -20,28 +20,6 @@ body {
 }
 
 
-
-.bt02 {
-    border-color: #5b5b5b;
-    background-color: var(--cor4);
-    color: var(--cor1);
-
-    border-radius: 100px;
-    border: 2px #5b5b5b;
-
-    padding: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    border-style: outset;
-
-    height: 45px;
-}
-
-.bt02:hover {
-    background-color: rgb(226, 226, 226);
-} 
-
-
 /* -=-=-=-=-=- Parte da Lateral esquerda do Menu Principal -=-=-=-=-=- */
 
 
@@ -71,59 +49,6 @@ body {
 
 /* -=-=-=-=-=-=-=-=-=- Main 3 -=-=-=-=-=-=-=-=-=- */
 
-#main3 {
-    margin-top: 200px;
-    width: 100%;
-    max-width: 1300px;
-    position: absolute;
-    display: inline;
-}
-
-#left_main3 {
-    float: left;
-}
-
-#right_main3 {
-    margin-top: 100px;
-    float: right;
-    width: 690px;
-}
-
-#title3 > div > p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: 600;
-    font-size: 50px;
-}
-
-#subtitle3 > p {
-    color: #383838;
-    margin-top: 70px;
-    font-size: 20px;
-    margin-left: 0px;
-    text-align: left;
-}
-
-#ListaMain3 {
-    display: flex;
-}
-
-#ListaMain3 > ul {
-    list-style-type: none;
-}
-
-#ListaMain3 > ul > li {
-    font-size: 20px;
-    padding-top: 30px;
-    display: flex;
-}
-
-#ListaMain3 > ul > li > p {
-    padding-left: 10px;
-}
-
-#Lista_m3_pt2 {
-    margin-left: 30px;
-}
 
 #btn_l3 {
     text-align: left;
