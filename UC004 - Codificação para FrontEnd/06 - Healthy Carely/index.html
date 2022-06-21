@@ -7,58 +7,154 @@
     <title>Healthy Carely</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 </head>
-<body>
+<body class="d-flex justify-content-center">
+    <div class="" style="max-width: 1921px; width: 100%;">
 
-    <header>
-        <nav class="navbar navbar-expand-lg">
-            <div class="container"">
-              <a class="navbar-brand" href="#"><img src="assets/images/logo.png" alt=""></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Doctor</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Services</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Review</a>
-                  </li>
-                </ul>
+      <header>
+          <nav class="navbar navbar-expand-lg d-flex">
+              <div class="ms-5 me-5 mt-2 col 12 d-flex">
+                <a class="navbar-brand" href="#"><img src="assets/images/logo.png" alt=""></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Doctor</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link active" aria-current="page" href="#">Review</a>
+                    </li>
+                  </ul>
+                  <a class="nav-link active me-md-3" aria-current="page" href="#">Sign In</a>
+                  <button type="button" class="btn btn-primary">Sign Up</button>
+                </div>
+              </div>
+          </nav>
+      </header>
 
-                <a class="nav-link active me-md-3" aria-current="page" href="#">Sign In</a>
-                <button type="button" class="btn btn-primary">Sign Up</button>
+      <main class="d-flex col-12 flex-column">
+        <div id="main1" class="mt-5 d-flex ms-5">
+          <div id="left_main1 mt-5">
+            <h1 class="display-5 fw-semibold">Medical care Now</h1>
+            <div class="d-flex fw-bold">
+              <h1 class="me-md-2 display-5 fw-semibold">Simplidied for</h1>
+              <h1 class="text-primary display-5 fw-semibold">Everyone</h1>
+            </div>
+            <p class="col-8">Health carely is a new way to get health insurance quotes. We offer tools similar to those
+              provided by insurance companies for free and prices are based on donations and not
+              restrictive health plan networks.</p>
+              <button type="button" class="btn btn-primary">Contact Us</button>
+          </div>
+          <div id="right_main1">
+            <img src="assets/images/ft_main1.png" alt="">
+          </div>
+        </div>
+
+        <div id="main2" class="d-flex align-items-center flex-column mt-5">
+          <p class="text-primary fw-semibold">Fast Solutions</p>
+          <h2 class="fw-semibold display-6">step by step to get your solutions</h2>
+          <div class="main2 d-flex justify-content-evenly col-12">
+      
+            <div class="card shadow pb-3 mb-5 bg-body rounded m-5" style="width: 22rem;">
+              <div class="bg-primary" style="height: 5px;"></div>
+              <div class="card-body p-5">
+                <img class="pb-3" src="assets/images/Search.png" alt="">
+                <h5 class="card-title fw-semibold">Check health complaints</h5>
+                <p class="card-text">Check the disease so you can
+                  easily choose the right specialist</p>
               </div>
             </div>
-        </nav>
-    </header>
-
-    <main class="d-flex justify-content-center col-12">
-      <div id="main1" class="mt-5 d-flex">
-        <div id="left_main1 ">
-          <h1 class="display-5 fw-semibold">Medical care Now</h1>
-          <div class="d-flex fw-bold">
-            <h1 class="me-md-2 display-5 fw-semibold">Simplidied for</h1>
-            <h1 class="text-primary display-5 fw-semibold">Everyone</h1>
+            <div class="card shadow pb-3 mb-5 bg-body rounded m-5" style="width: 22rem;">
+              <div class="bg-primary" style="height: 5px;"></div>
+              <div class="card-body p-5">
+                <img class="pb-3" src="assets/images/Profile.png" alt="">
+                <h5 class="card-title fw-semibold">Choose doctor Specialist</h5>
+                <p class="card-text">Choose a specialist according
+                  to your disease complaints</p>
+              </div>
+            </div>
+            <div class="card shadow pb-3 mb-5 bg-body rounded m-5" style="width: 22rem;">
+              <div class="bg-primary" style="height: 5px;"></div>
+              <div class="card-body p-5">
+                <img class="pb-3" src="assets/images/Calendar.png" alt="">
+                <h5 class="card-title fw-semibold">Make a Schedule</h5>
+                <p class="card-text">Make a schedule with the doctor
+                  concerned so you can start the
+                  examination</p>
+              </div>
+            </div>
+            <div class="card shadow pb-3 mb-5 bg-body rounded m-5" style="width: 22rem;">
+              <div class="bg-primary" style="height: 5px;"></div>
+              <div class="card-body p-5">
+                <img class="pb-3" src="assets/images/Star.png" alt="">
+                <h5 class="card-title fw-semibold">Get your Solutions</h5>
+                <p class="card-text">After conducting an examination
+                  with a specialist we can help find
+                  the right healing method</p>
+              </div>
+            </div>
           </div>
-          <p class="col-8">Health carely is a new way to get health insurance quotes. We offer tools similar to those
-            provided by insurance companies for free and prices are based on donations and not
-            restrictive health plan networks.</p>
-            <button type="button" class="btn btn-primary">Contact Us</button>
         </div>
 
-        <div id="right_main1">
-          <img src="assets/images/ft_main1.png" alt="">
-        </div>
-      </div>
+        <div class="main3 col-12 d-flex mt-5">
+          <div class="left_main3 ms-5 mt-5">
+            <p class="text-primary fw-semibold">Find Doctor</p>
+            <h2 class="fw-semibold col-4 display-6 mb-3">Find the right doctor according
+              to your complaint</h2>
+            <p class="col-4">HealthCare.ly is a free, health app that goes beyond matching you with doctors.
+              It actively helps you find the right doctor based on your medical and personal
+              needs and connects you with your HealthCarely community for ongoing
+              support throughout your journey to healthier living.</p>
+            <div class="d-flex">
+              <img class="me-2" src="assets/images/correct.png" height="24px" width="24px" alt="">
+              <p class="fw-semibold">100% free app designed to help you find the right doctor for you.</p>
+            </div>
 
-    </main>
+            <div class="d-flex">
+              <img class="me-2" src="assets/images/correct.png" height="24px" width="24px" alt="">
+              <p class="fw-semibold">Available 900 doctors specialist</p>
+            </div>
+            <button type="button" class="btn btn-primary">See the Doctors</button>
+          </div>
+
+          <div id="right_main3">
+            <img src="assets/images/ft_main3.png" alt="">
+          </div>
+        </div>
+
+        <div class="main4 mt-5 d-flex justify-content-center" style="width: 100%;">
+          <div class="left_main4 mt-5">
+            <img src="assets/images/ft_main4.png" alt="">
+          </div>
+
+          <div class="right_main4 mt-5">
+            <p class="text-primary fw-semibold">Make a Shedule</p>
+            <h2 class="fw-semibold col-4 display-6 mb-3">Make a schedule in advance
+              with the available doctor</h2>
+            <p class="col-4">Healthcare is a very painful process, especially if you’re not taking care
+              of your health and having regular check-ups. HealhtyCarely makes it
+              easier for everyone to schedule a doctor’s appointment.</p>
+            <div class="d-flex">
+              <img class="me-2" src="assets/images/correct.png" height="24px" width="24px" alt="">
+              <p class="fw-semibold">Make a schedule online is easy</p>
+            </div>
+
+            <div class="d-flex">
+              <img class="me-2" src="assets/images/correct.png" height="24px" width="24px" alt="">
+              <p class="fw-semibold">Easy to connect with doctor</p>
+            </div>
+            <button type="button" class="btn btn-primary">Make Schedule Now!</button>
+          </div>
+        </div>
+      </main>
+    </div>
     
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
