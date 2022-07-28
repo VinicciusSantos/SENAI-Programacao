@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@500&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+    background-image: linear-gradient(180deg, #ffffaf 0, #ffffa6 25%, #f2f29d 50%, #d7dd94 75%, #bfca8b 100%);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#contCalculadora {
+    background-color: #444;
+    height: 520px;
+    width: 400px;
+    border-radius: 30px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    padding: 15px;
+    box-shadow: 4px 4px 4px rgba(0,0,0,.2);
+}
+
+#display {
+    width: 350px;
+    height: 70px;
+
+    border: 3px solid rgba(0,0,0,.5);
+    margin-top: 15px;
+
+    background-color: #ddd;
+    border-radius: 20px;
+
+    font-size: 40px;
+    color: #333;
+}
+
+#displayNums {
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0px 25px;
+}
+
+.btn {
+    width: 75px;
+    height: 75px;
+    border: none;
+    border-radius: 10px;
+    background-color: #777;
+
+    color: #ddd;
+    font-size: 25px;
+
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #666;
+}
+
+#contButtons {
+    height: calc(70%);
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 35px;
+}
+
+.linha {
+    display: flex;
+    justify-content: space-between;
+}
+
+.operador {
+    background-color: rgb(167, 61, 61);
+}
+
+.operador:hover {
+    background-color: rgb(145, 54, 54);
+}
+
+.bigual {
+    background-color: rgb(226, 160, 62);
+}
+
+.bigual:hover {
+    background-color: rgb(202, 142, 52);
+}
+
+.l0 {
+    justify-content: flex-end;
+}
+
+.bapagar {
+    height: 40px;
+    font-size: 18px;
+    background-color: #ccc;
+    color: #333;
+}
+
+.bapagar:hover {
+    background-color: #aaa;
+}
+
+#criador {
+    position: fixed;
+    bottom: 10px;
+    color: #333;
+}

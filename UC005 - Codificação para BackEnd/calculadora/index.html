@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">    
+    <title>Document</title>
+</head>
+<body>
+    <div id="contCalculadora">
+        <div id="display">
+            <span id="displayNums">Calculadora</span>
+        </div>
+
+        <div id="contButtons">
+            <div class="linha l0">
+                <button class="btn bapagar" onclick="apagar()">Limpar</button>
+            </div>
+            <div class="linha l1">
+                <button class="btn b7" onclick="addNum('7')">7</button>
+                <button class="btn b8" onclick="addNum('8')">8</button>
+                <button class="btn b9" onclick="addNum('9')">9</button>
+                <button class="btn bdivisao operador" onclick="operador('/')">/</button>
+            </div>
+            <div class="linha l2">
+                <button class="btn b4" onclick="addNum('4')">4</button>
+                <button class="btn b5" onclick="addNum('5')">5</button>
+                <button class="btn b6" onclick="addNum('6')">6</button>
+                <button class="btn bvezes operador" onclick="operador('x')">X</button>
+            </div>
+            <div class="linha l3">
+                <button class="btn b1" onclick="addNum('1')">1</button>
+                <button class="btn b2" onclick="addNum('2')">2</button>
+                <button class="btn b3" onclick="addNum('3')">3</button>
+                <button class="btn bmais operador" onclick="operador('+')">+</button>
+            </div>
+            <div class="linha l4">
+                <button class="btn b0" onclick="addNum('0')">0</button>
+                <button class="btn b." onclick="addNum('.')">.</button>
+                <button class="btn bigual" onclick="calcular()">=</button>
+                <button class="btn bmenos operador" onclick="operador('-')">-</button>
+            </div>
+        </div>
+    </div>
+    <div id="criador">Vinicius Guedes</div>
+    <script src="index.js"></script>
+</body>
+</html>
