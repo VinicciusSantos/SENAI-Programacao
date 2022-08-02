@@ -1,27 +1,19 @@
-var lampadas = [document.getElementById("l3"), document.getElementById("l2"), document.getElementById("l1")]
-var aceso = 0
-var automatico = false
+var semaforo = document.getElementById("semaforo")
 
-function acender(lampada){
-    if (lampada.style.opacity == '1')
-    lampada.style.opacity = '.6'
-    else
-    lampada.style.opacity = '1'
+var corSemaforo = 1
+
+function setCor(cor) {
+    corSemaforo = cor
+    switch (cor) {
+        case 1: semaforo.style.backgroundImage = "url('/assets/vermelho.png')"; break;
+        case 2: semaforo.style.backgroundImage = "url('/assets/amarelo.png')"; break;
+        case 3: semaforo.style.backgroundImage = "url('/assets/verde.png')"; break;
+        default: semaforo.style.backgroundImage = "url('/assets/desligado.png')"; break;
+    }
 }
 
-function troca(){
-    if (automatico) automatico = false
-    else {
-        automatico = true
-        aceso = 0
-    }
-
-    // while (automatico) {
-    //     // lampadas[aceso].style.opacity = '1'
-    //     // lampadas[aceso].style.opacity = '.6'
-    //     console.log(aceso)
-
-    //     aceso++
-    //     if (aceso === 3) aceso = 0
-    // }
+function setAuto() {
+    if (corSemaforo === 4) corSemaforo = 1
+    setCor(corSemaforo)
+    corSemaforo++
 }

@@ -8,12 +8,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="contCalculadora">
-        <button id="l1" class="lamp" onclick="acender(l1)"></button>
-        <button id="l2" class="lamp" onclick="acender(l2)"></button>
-        <button id="l3" class="lamp" onclick="acender(l3)"></button>
+    <div id="semaforo"></div>
+    <div class="contButtons">
+        <button id="btn b-verm" onclick="setCor(1)">Vermelho</button>
+        <button id="btn b-ama" onclick="setCor(2)">Amarelo</button>
+        <button id="btn b-auto" onclick="setCor(3)">Verde</button>
+        <button id="btn b-auto" onclick="setInterval(setAuto, 1000)">Automatico</button>
     </div>
-    <button id="btn_auto" onclick="troca()">Automático</button>
+    <div class="criador">Vinicius Guedes</div>
     <script src="index.js"></script>
 </body>
 </html>

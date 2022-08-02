@@ -5,66 +5,35 @@
 
 body {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+
     height: 100vh;
     width: 100vw;
+
     background-image: radial-gradient(circle at 50% -20.71%, #ffe6cd 0, #ffe7ca 6.25%, #ffe9c9 12.5%, #ffebc8 18.75%, #fbecc8 25%, #f6eec8 31.25%, #f1efc9 37.5%, #ebf1cb 43.75%, #e6f2cd 50%, #e1f3d0 56.25%, #dbf4d3 62.5%, #d6f5d7 68.75%, #d1f6db 75%, #ccf7df 81.25%, #c8f8e4 87.5%, #c4f8e9 93.75%, #c1f8ee 100%);
 }
 
-#contCalculadora {
-    width: 16vw;
-    height: 65vh;
-    background-color: #555;
+#semaforo {
+    width: 183px;
+    height: 421px;
+    background-image: url('/assets/desligado.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    border: 50px solid white;
     border-radius: 30px;
-    box-shadow: 5px 5px 5px rgba(0,0,0,.2);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
 }
 
-.lamp {
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-
-    opacity: .6;
+.contButtons {
+    margin-top: 25px;
 }
 
-#l1 {
-    background-color: rgb(218, 34, 34);
-}
-
-#l2 {
-    background-color: rgb(218, 154, 34);
-}
-
-#l3 {
-    background-color: rgb(123, 218, 34);
-}
-
-#btn_auto {
+.criador {
     position: fixed;
-    bottom: 80px;
-
-    background-color: white;
-    border: none;
-    padding: 5px 15px;
-    border-radius: 10px;
-    border: 1px solid #333;
-
-    font-size: 20px;
-    color: #333;
-
-    transition-duration: .3s;
-    cursor: pointer;
-}
-
-#btn_auto:hover {
-    transform: scale(1.1);
-    transition-duration: .3s;
+    bottom: 10px;
+    color: white;
+    text-shadow: 0px 0px 4px rgba(0,0,0,.3);
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
 }
